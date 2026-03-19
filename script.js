@@ -1144,9 +1144,10 @@ function checkLevel5Answer() {
     document.getElementById(`level${currentQuestion.level}-score`).textContent = currentQuestion.score;
   }
   
-  // 禁用检查按钮，启用下一题按钮
-  document.getElementById('check-dictation-btn').disabled = true;
-  document.getElementById('next-dictation-btn').disabled = false;
+  // 延迟后进入下一题
+  setTimeout(() => {
+    nextQuestion();
+  }, 1500);
 }
 
 // 进入下一题
