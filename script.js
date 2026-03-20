@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'foot', chinese: '脚', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/foot--_gb_1.mp3', image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1006387348161953870~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444712&x-signature=n97Aud7eVOd%2BX6wBkXfUDIhWaRY%3D' },
-  { id: 2, word: 'arm', chinese: '手臂', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/arm--_gb_1.mp3', image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1006395121945018417~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444712&x-signature=wxOToGUAfIbm8Sp88j6KBZ8Fr3E%3D' },
-  { id: 3, word: 'chin', chinese: '下巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/chin--_gb_1.mp3', image: 'https://p3-doubao-search-sign.byteimg.com/labis/image/303db30354c5bf7d5f8f0bba84260eff~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444751&x-signature=YHxnffbd1UTtgo8MX8to%2BoZJ2uI%3D' },
-  { id: 4, word: 'leg', chinese: '腿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/leg--_gb_1.mp3', image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/973256709166071811~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444712&x-signature=SQAnv9CN7UfJjUseHuLno4a5rA4%3D' },
-  { id: 5, word: 'nose', chinese: '鼻子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/nose--_gb_1.mp3', image: 'https://p26-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/903075225467355146~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444726&x-signature=zXjL7JIfUTbQYAqH4amk%2FfB%2Bejs%3D' },
-  { id: 6, word: 'head', chinese: '头', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/head--_gb_1.mp3', image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/993414150346506300~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444726&x-signature=DFlDdWktPz1B6SwvUMHF0OXQxgw%3D' },
-  { id: 7, word: 'eye', chinese: '眼睛', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/eye--_gb_1.mp3', image: 'https://p3-doubao-search-sign.byteimg.com/labis/image/76eb3a2c0bdd23cbda95b0f0d2266da6~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444726&x-signature=InGaumpe0%2BpUCIy%2BNwvYF9tgEh4%3D' },
-  { id: 8, word: 'ear', chinese: '耳朵', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/ear--_gb_1.mp3', image: 'https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/919901902304444670~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444739&x-signature=Ts68QIY5O5amPV4E2BEDQNJR000%3D' },
-  { id: 9, word: 'paw', chinese: '爪子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/paw--_gb_1.mp3', image: 'https://p26-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1061176399119384669~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1789444761&x-signature=8gKuNMWaS8cLDj9QE1Dkx3HvPyU%3D' }
+  { id: 1, word: 'foot', chinese: '脚', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/foot--_gb_1.mp3', image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/33fbb3815a914359bc6708895434d20e~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=2026032017413706B5B34E23D4211847A2&amp;rrcfp=e75484ac&amp;x-expires=1774604497&amp;x-signature=6Fsaq%2BAYEc%2BSD8svfbEaWr8ThXE%3D' },
+  { id: 2, word: 'arm', chinese: '手臂', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/arm--_gb_1.mp3', image: 'https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/2c87e0e8190445ad970ca77e88f95644~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=202603201741284AF4800C1F461043925A&amp;rrcfp=e75484ac&amp;x-expires=1774604489&amp;x-signature=dmXvzT3J5hiMyScBMD0uZeHKWgo%3D' },
+  { id: 3, word: 'chin', chinese: '下巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/chin--_gb_1.mp3', image: 'https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/b25a9e17fad6457285beac05a634e4e1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174120D422FC6D71665718A47D&amp;rrcfp=e75484ac&amp;x-expires=1774604480&amp;x-signature=GQHkUzJuX60yY8457WPXovqZAik%3D' },
+  { id: 4, word: 'leg', chinese: '腿', audio: 'https://dictionary.cambridge.org/media/english/us_pron/l/leg/leg__/leg.mp3', image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/60b8872266874276a31867c821272a3f~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174107C6F57F682E1C041A608B&amp;rrcfp=e75484ac&amp;x-expires=1774604468&amp;x-signature=gJ2Swe6%2F%2BoqGTcJciCL7rCjn1d8%3D' },
+  { id: 5, word: 'nose', chinese: '鼻子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/nose--_gb_1.mp3', image: 'https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/a5bfa0f2200c46bdb6f0d859a63ed6eb~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174057D422FC6D716657189E21&amp;rrcfp=e75484ac&amp;x-expires=1774604458&amp;x-signature=Mry51wQMnXw95NJ6YEFlft%2F7OeY%3D' },
+  { id: 6, word: 'head', chinese: '头', audio: 'https://dictionary.cambridge.org/media/english/us_pron/h/hea/head_/head.mp3', image: 'https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/8ece27475b2c450c89cdb5549be60ff1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=202603201740374AF4800C1F46104385F7&amp;rrcfp=e75484ac&amp;x-expires=1774604438&amp;x-signature=FfcJMGzcg3ALVxdnsbZ30GweLVA%3D' },
+  { id: 7, word: 'eye', chinese: '眼睛', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/eye--_gb_1.mp3', image: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/e8a6333ec867463aad0c828c06811a95~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174015B463FECB53D235472C5A&amp;rrcfp=e75484ac&amp;x-expires=1774604416&amp;x-signature=wzrmLstSWyaxlrcZ14TkAJcxpBA%3D' },
+  { id: 8, word: 'ear', chinese: '耳朵', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/ear--_gb_1.mp3', image: 'https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/59c804a8af6d4fe4a754f33e86efbe45~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174005F1C55C95804AB51CA958&amp;rrcfp=e75484ac&amp;x-expires=1774604405&amp;x-signature=SuNTePuH7GK67Rb0rFfnb41VcSg%3D' },
+  { id: 9, word: 'paw', chinese: '爪子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/paw--_gb_1.mp3', image: 'https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/242fb2e557c94525a3c58eb8a9ce2a4a~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174026C77BCE7B562E6F1474D1&amp;rrcfp=e75484ac&amp;x-expires=1774604427&amp;x-signature=5v%2FoTQr0XJ%2BStBbHd82TOsquFhU%3D' }
 ];
 
 // 游戏进度数据
@@ -38,7 +38,7 @@ let soundEnabled = true;
 const soundEffects = {
   correct: new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3'),
   wrong: new Audio('https://assets.mixkit.co/active_storage/sfx/2003/2003-preview.mp3'),
-  success: new Audio('https://assets.mixkit.co/active_storage/sfx/1347/1347-preview.mp3')
+  success: new Audio('https://assets.mixkit.co/sfx/preview/mixkit-magic-wind-chimes-2862.mp3')
 };
 
 // DOM 加载完成后初始化游戏
@@ -133,13 +133,13 @@ function updateLevelStatus() {
     const levelStatus = document.getElementById(`level${i}-status`);
     if (levelStatus) {
       if (gameProgress.levels[i].completed) {
-        levelStatus.textContent = '已完成';
+        levelStatus.textContent = 'DONE';
         levelStatus.className = 'level-status completed';
       } else if (i === gameProgress.currentLevel) {
-        levelStatus.textContent = '进行中';
+        levelStatus.textContent = 'GOING';
         levelStatus.className = 'level-status in-progress';
       } else {
-        levelStatus.textContent = '未开始';
+        levelStatus.textContent = 'GO';
         levelStatus.className = 'level-status not-started';
       }
     }
@@ -151,10 +151,10 @@ function updateLevelStatus() {
       const sublevelStatus = document.getElementById(`sublevel${i+1}-status`);
       if (sublevelStatus) {
         if (gameProgress.levels[4].subLevels[i]) {
-          sublevelStatus.textContent = '已完成';
+          sublevelStatus.textContent = 'DONE';
           sublevelStatus.className = 'sublevel-status completed';
         } else {
-          sublevelStatus.textContent = '未开始';
+          sublevelStatus.textContent = 'GO';
           sublevelStatus.className = 'sublevel-status not-started';
         }
       }
@@ -701,16 +701,20 @@ function updateSublevel2Display(question) {
     const letterElement = document.createElement('div');
     letterElement.className = 'scrambled-letter';
     letterElement.textContent = letter;
-    letterElement.draggable = true;
+    letterElement.dataset.letter = letter;
     
-    // 添加拖拽事件
-    letterElement.addEventListener('dragstart', function(e) {
-      e.dataTransfer.setData('text/plain', letter);
-      this.classList.add('dragging');
-    });
-    
-    letterElement.addEventListener('dragend', function() {
-      this.classList.remove('dragging');
+    // 添加点击事件
+    letterElement.addEventListener('click', function() {
+      if (this.classList.contains('used')) return;
+      
+      // 找到下一个空的单词槽
+      const emptySlot = wordSlots.querySelector('.word-slot:not(.filled)');
+      if (emptySlot) {
+        emptySlot.textContent = letter;
+        emptySlot.classList.add('filled');
+        emptySlot.dataset.letter = letter;
+        this.classList.add('used', 'opacity-50');
+      }
     });
     
     scrambledLetters.appendChild(letterElement);
@@ -721,26 +725,6 @@ function updateSublevel2Display(question) {
     const slotElement = document.createElement('div');
     slotElement.className = 'word-slot';
     slotElement.dataset.index = i;
-    
-    // 添加放置事件
-    slotElement.addEventListener('dragover', function(e) {
-      e.preventDefault();
-      this.classList.add('drag-over');
-    });
-    
-    slotElement.addEventListener('dragleave', function() {
-      this.classList.remove('drag-over');
-    });
-    
-    slotElement.addEventListener('drop', function(e) {
-      e.preventDefault();
-      this.classList.remove('drag-over');
-      
-      const letter = e.dataTransfer.getData('text/plain');
-      this.textContent = letter;
-      this.classList.add('filled');
-      this.dataset.letter = letter;
-    });
     
     wordSlots.appendChild(slotElement);
   }
@@ -1226,13 +1210,13 @@ function showLevelCompleteModal(level, sublevel, score, totalQuestions) {
   const percentage = Math.round((score / totalQuestions) * 100);
   
   if (percentage >= 90) {
-    feedback = '太棒了！你是单词小能手！';
+    feedback = 'Amazing! You\'re a word wizard!';
   } else if (percentage >= 70) {
-    feedback = '做得很好！继续加油！';
+    feedback = 'Great job! Keep it up!';
   } else if (percentage >= 50) {
-    feedback = '不错的尝试！再多练习一下吧！';
+    feedback = 'Good try! Practice a little more!';
   } else {
-    feedback = '继续努力，你会做得更好的！';
+    feedback = 'Keep trying, you\'ll get better!';
   }
   
   levelCompleteFeedback.textContent = feedback;
@@ -1243,13 +1227,13 @@ function showLevelCompleteModal(level, sublevel, score, totalQuestions) {
     const allSublevelsCompleted = gameProgress.levels[4].subLevels.every(completed => completed);
     
     if (allSublevelsCompleted) {
-      nextLevelBtn.textContent = '进入下一关';
+      nextLevelBtn.textContent = 'NEXT';
       nextLevelBtn.onclick = () => {
         levelCompleteModal.classList.remove('active');
         showPage('level5-page');
       };
     } else {
-      nextLevelBtn.textContent = '下一个子关卡';
+      nextLevelBtn.textContent = 'NEXT';
       nextLevelBtn.onclick = () => {
         levelCompleteModal.classList.remove('active');
         
@@ -1260,14 +1244,14 @@ function showLevelCompleteModal(level, sublevel, score, totalQuestions) {
     }
   } else if (level < 5) {
     // 普通关卡
-    nextLevelBtn.textContent = '进入下一关';
+    nextLevelBtn.textContent = 'NEXT';
     nextLevelBtn.onclick = () => {
       levelCompleteModal.classList.remove('active');
       showPage(`level${level + 1}-page`);
     };
   } else {
     // 最后一关
-    nextLevelBtn.textContent = '查看结果';
+    nextLevelBtn.textContent = '？？？';
     nextLevelBtn.onclick = () => {
       levelCompleteModal.classList.remove('active');
       showResultPage();
@@ -1291,17 +1275,17 @@ function showResultPage() {
   
   // 设置鼓励语
   const encouragement = document.getElementById('encouragement');
-  const totalPercentage = Math.round((gameProgress.totalScore / 30) * 100); // 5个关卡，每个6题，共30题
+  const totalPercentage = Math.round((gameProgress.totalScore / 30) * 100); // 5 stages, 6 questions each, 30 total
   
   let encouragementText = '';
   if (totalPercentage >= 90) {
-    encouragementText = '太棒了！你是英语单词小达人！所有身体部位的单词都难不倒你！';
+    encouragementText = 'Amazing! You\'re a body parts word master! You know all the words!';
   } else if (totalPercentage >= 70) {
-    encouragementText = '做得很好！你已经掌握了大部分身体部位的单词，继续加油！';
+    encouragementText = 'Great job! You know most of the body parts words. Keep it up!';
   } else if (totalPercentage >= 50) {
-    encouragementText = '不错的尝试！再多练习一下，你会做得更好的！';
+    encouragementText = 'Good try! Practice more and you\'ll do even better!';
   } else {
-    encouragementText = '继续努力！英语学习需要多加练习，相信你会进步的！';
+    encouragementText = 'Keep practicing! Learning English takes time, and you\'re getting better!';
   }
   
   encouragement.textContent = encouragementText;
@@ -1349,6 +1333,62 @@ function showFeedback(isCorrect, message) {
   // 设置图标和消息
   feedbackIcon.className = `feedback-icon ${isCorrect ? 'correct' : 'wrong'}`;
   feedbackIcon.innerHTML = isCorrect ? '<i class="fa fa-check-circle"></i>' : '<i class="fa fa-times-circle"></i>';
+  
+  // 播放音效
+  if (isCorrect) {
+    const successAudio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3');
+    successAudio.volume = 0.5;
+    successAudio.play();
+  }
+  
+  // 多样的英文反馈信息
+  const correctFeedbacks = [
+    "Awesome!",
+    "Great job!",
+    "Perfect!",
+    "You got it!",
+    "Way to go!",
+    "Excellent!",
+    "Superb!",
+    "Fantastic!",
+    "You're a star!",
+    "Bravo!"
+  ];
+  
+  const wrongFeedbacks = [
+    "Oops, try again!",
+    "Not quite right.",
+    "Almost there!",
+    "Give it another shot!",
+    "Don't worry, try again!",
+    "Nice try!",
+    "You can do it!",
+    "Keep practicing!",
+    "Let's try once more!",
+    "Not today, but you'll get it!"
+  ];
+  
+  // 如果消息是中文，则转换为英文
+  if (message.includes('请输入单词')) {
+    message = 'Please enter a word!';
+  } else if (message.includes('请填满所有字母槽')) {
+    message = 'Please fill all the letter slots!';
+  } else if (message.includes('请填满所有空白')) {
+    message = 'Please fill all the blanks!';
+  } else if (message.includes('请先完成前面的关卡')) {
+    message = 'Please complete the previous stage first!';
+  } else if (message.includes('请先完成前面的子关卡')) {
+    message = 'Please complete the previous mini-game first!';
+  } else if (message.includes('答对了')) {
+    // 从正确反馈数组中随机选择一条
+    message = correctFeedbacks[Math.floor(Math.random() * correctFeedbacks.length)];
+  } else if (message.includes('答错了')) {
+    // 从错误反馈数组中随机选择一条，并添加正确答案
+    const correctAnswer = message.split('！')[1];
+    const wrongFeedback = wrongFeedbacks[Math.floor(Math.random() * wrongFeedbacks.length)];
+    message = `${wrongFeedback} ${correctAnswer}`;
+  }
+  
   feedbackMessage.textContent = message;
   
   // 显示弹窗
@@ -1404,12 +1444,18 @@ function resetSublevel1() {
 // 重置关卡4.2（乱序字母排序）
 function resetSublevel2() {
   const wordSlots = document.getElementById('word-slots');
+  const scrambledLetters = document.getElementById('scrambled-letters');
   
   // 清空所有字母槽
   wordSlots.querySelectorAll('.word-slot').forEach(slot => {
     slot.textContent = '';
     slot.classList.remove('filled');
     delete slot.dataset.letter;
+  });
+  
+  // 重置所有乱序字母
+  scrambledLetters.querySelectorAll('.scrambled-letter').forEach(letter => {
+    letter.classList.remove('used', 'opacity-50');
   });
 }
 
