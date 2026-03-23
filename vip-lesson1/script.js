@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-{ id: 1, word: 'crayon', chinese: '蜡笔', audio: 'https://dict.youdao.com/dictvoice?audio=crayon&type=1', image: '../image/vip-lesson1/crayon.jepg' },
-  { id: 2, word: 'rubber', chinese: '橡皮', audio: 'https://dict.youdao.com/dictvoice?audio=rubber&type=1', image: '../image/vip-lesson1/rubber.jepg' },
-  { id: 3, word: 'pencil case', chinese: '铅笔盒', audio: 'https://dict.youdao.com/dictvoice?audio=pencil%20case&type=1', image: '../image/vip-lesson1/pencil case.jepg' },
-  { id: 4, word: 'purple', chinese: '紫色', audio: 'https://dict.youdao.com/dictvoice?audio=purple&type=1', image: '../image/vip-lesson1/purple.jepg' },
-  { id: 5, word: 'white', chinese: '白色', audio: 'https://dict.youdao.com/dictvoice?audio=white&type=1', image: '../image/vip-lesson1/white.jepg' },
-  { id: 6, word: 'brown', chinese: '棕色', audio: 'https://dict.youdao.com/dictvoice?audio=brown&type=1', image: '../image/vip-lesson1/brown.jepg' },
-  { id: 7, word: 'cupboard', chinese: '橱柜', audio: 'https://dict.youdao.com/dictvoice?audio=cupboard&type=1', image: '../image/vip-lesson1/cupboard.jepg' },
-  { id: 8, word: 'board', chinese: '黑板', audio: 'https://dict.youdao.com/dictvoice?audio=board&type=1', image: '../image/vip-lesson1/board.jepg' },
-  { id: 9, word: 'bookcase', chinese: '书架', audio: 'https://dict.youdao.com/dictvoice?audio=bookcase&type=1', image: '../image/vip-lesson1/bookcase.jepg' }
+{ id: 1, word: 'crayon', chinese: '蜡笔', audio: 'https://dict.youdao.com/dictvoice?audio=crayon&type=1', image: '../image/vip-lesson1/crayon.jpeg' },
+  { id: 2, word: 'rubber', chinese: '橡皮', audio: 'https://dict.youdao.com/dictvoice?audio=rubber&type=1', image: '../image/vip-lesson1/rubber.jpeg' },
+  { id: 3, word: 'pencil case', chinese: '铅笔盒', audio: 'https://dict.youdao.com/dictvoice?audio=pencil%20case&type=1', image: '../image/vip-lesson1/pencil case.jpeg' },
+  { id: 4, word: 'purple', chinese: '紫色', audio: 'https://dict.youdao.com/dictvoice?audio=purple&type=1', image: '../image/vip-lesson1/purple.jpeg' },
+  { id: 5, word: 'white', chinese: '白色', audio: 'https://dict.youdao.com/dictvoice?audio=white&type=1', image: '../image/vip-lesson1/white.jpeg' },
+  { id: 6, word: 'brown', chinese: '棕色', audio: 'https://dict.youdao.com/dictvoice?audio=brown&type=1', image: '../image/vip-lesson1/brown.jpeg' },
+  { id: 7, word: 'cupboard', chinese: '橱柜', audio: 'https://dict.youdao.com/dictvoice?audio=cupboard&type=1', image: '../image/vip-lesson1/cupboard.jpeg' },
+  { id: 8, word: 'board', chinese: '黑板', audio: 'https://dict.youdao.com/dictvoice?audio=board&type=1', image: '../image/vip-lesson1/board.jpeg' },
+  { id: 9, word: 'bookcase', chinese: '书架', audio: 'https://dict.youdao.com/dictvoice?audio=bookcase&type=1', image: '../image/vip-lesson1/bookcase.jpeg' }
 ];
 
 // 游戏进度数据
