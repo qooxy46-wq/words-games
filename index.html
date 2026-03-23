@@ -3,109 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QUIRKY Education - 你的个人教育品牌</title>
+    <title>QUIRKY GO单词打卡练习</title>
     <style>
-        /* 硅谷现代风 CSS 设计 */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        body { background-color: #f4f7f6; color: #333; }
+        /* 基础样式复刻 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* 顶部品牌区 */
-        .hero { background: linear-gradient(135deg, #27AE60, #1B5E20); color: white; text-align: center; padding: 60px 20px; border-bottom-left-radius: 50px; border-bottom-right-radius: 50px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; font-family: 'Bauhaus 93', sans-serif; letter-spacing: 2px; }
-        .hero p { font-size: 1.2rem; opacity: 0.9; }
+        body {
+            /* 复刻原网页底色 */
+            background-color: #f4f7f6;
+            /* 复刻原网页字体 stack，追求可爱圆润感 */
+            font-family: "Arial Rounded MT Bold", "Helvetica Neue", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
 
-        /* 四大身份板块容器 */
-        .container { max-width: 1000px; margin: -30px auto 50px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; position: relative; z-index: 10; }
-        
-        /* 身份卡片 */
-        .card { background: white; border-radius: 20px; padding: 30px 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; border-top: 5px solid #ccc; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .card h2 { margin-bottom: 10px; color: #333; }
-        .card p { color: #777; font-size: 0.9rem; }
-        
-        /* 为不同身份定制颜色 */
-        .card.learners { border-top-color: #3498db; }
-        .card.parents { border-top-color: #e74c3c; }
-        .card.teachers { border-top-color: #f1c40f; }
-        .card.clubbers { border-top-color: #9b59b6; }
+        /* 大标题样式 */
+        .main-title {
+            /* 复刻原网页大标题颜色 (紫色 accent) */
+            color: rgb(206, 147, 216);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            /* 增加一点可爱阴影 */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
 
-        /* 内容展示区 (一开始只有 Learners 展开) */
-        .content-panel { display: none; max-width: 1000px; margin: 0 auto 50px; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .content-panel.active { display: block; animation: fadeIn 0.5s; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* 选项卡容器 */
+        .tabs-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-        /* 层级菜单样式 */
-        .path-title { color: #3498db; margin-bottom: 20px; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; }
-        .lesson-grid { display: flex; gap: 15px; margin-top: 20px; }
-        .lesson-btn { text-decoration: none; background: #E8F5E9; color: #27AE60; padding: 15px 30px; border-radius: 10px; font-weight: bold; border: 2px dashed #27AE60; transition: all 0.3s; }
-        .lesson-btn:hover { background: #27AE60; color: white; }
+        /* 基础圆角矩形按钮样式 */
+        .tab-btn {
+            /* 复刻原网页按钮底色 (Green) */
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            /* 复刻原网页大圆角 */
+            border-radius: 20px;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+            /* 模仿原网页按钮的轻微阴影 */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* 悬停效果 */
+        .tab-btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        /* 点击效果 */
+        .tab-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Coming Soon 占位卡片 (灰色) */
+        .tab-btn.disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .tab-btn.disabled:hover { transform: none; }
+
+        /* ---------------------------------------------------- */
+        /* 交互核心：通过 CSS 控制显示/隐藏 */
         
-        .coming-soon { color: #999; font-style: italic; margin-top: 20px; }
+        /* 12大主题的二级菜单 (初始隐藏) */
+        #themes-menu {
+            display: none;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            animation: fadeIn 0.5s;
+        }
+
+        /* 返回按钮 */
+        .back-btn {
+            background: none;
+            border: none;
+            color: #7f8c8d;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>QUIRKY GO</h1>
-        <p>连接学习者、家长与教育者的未来生态圈</p>
+    <h1 class="main-title">QUIRKY GO单词打卡练习</h1>
+
+    <div class="tabs-container" id="main-menu">
+        <button class="tab-btn" onclick="showThemes()">12大主题词汇打卡</button>
+        <button class="tab-btn disabled">PU2打卡 (研发中)</button>
+        <button class="tab-btn disabled">VIP打卡 (研发中)</button>
     </div>
 
-    <div class="container">
-        <div class="card learners" onclick="showPanel('learners-panel')">
-            <h2>Learners</h2>
-            <p>原版课程 / 考试冲刺 / 打卡任务</p>
-        </div>
-        <div class="card parents" onclick="showPanel('parents-panel')">
-            <h2>Parents</h2>
-            <p>探索课程 / 沙盘疗愈 / 成长规划</p>
-        </div>
-        <div class="card teachers" onclick="showPanel('teachers-panel')">
-            <h2>Teachers</h2>
-            <p>教材设计 / 品牌建立 / 机会寻找</p>
-        </div>
-        <div class="card clubbers" onclick="showPanel('clubbers-panel')">
-            <h2>Future Clubbers</h2>
-            <p>产品 / 投资 / 资源 / 营销</p>
-        </div>
-    </div>
-
-    <div id="learners-panel" class="content-panel active">
-        <h2 class="path-title">🚀 学习者中心 (Learners)</h2>
-        <p style="color: #666; margin-bottom: 20px;">路径：原版教材系列课程 ➔ 课后打卡任务 ➔ 词汇打卡练习 ➔ 12大主题词汇打卡</p>
-        
-        <h3>当前开放任务：</h3>
-        <div class="lesson-grid">
-            <a href="lesson1/index.html" class="lesson-btn">▶ Start Lesson 1</a>
-            <a href="lesson2/index.html" class="lesson-btn">▶ Start Lesson 2</a>
-        </div>
-        
-        <p class="coming-soon">其他板块 (Vibe Coding系列课程、语法打卡、阅读打卡等) 正在研发中...</p>
-    </div>
-
-    <div id="parents-panel" class="content-panel">
-        <h2 class="path-title">👨‍👩‍👧 家长中心 (Parents)</h2>
-        <p class="coming-soon">沙盘疗愈、营养保健等模块即将上线，敬请期待！</p>
-    </div>
-
-    <div id="teachers-panel" class="content-panel">
-        <h2 class="path-title">👩‍🏫 教师赋能 (Teachers)</h2>
-        <p class="coming-soon">教材设计工作台、品牌建立指南正在建设中！</p>
-    </div>
-
-    <div id="clubbers-panel" class="content-panel">
-        <h2 class="path-title">🤝 俱乐部 (Future Clubbers)</h2>
-        <p class="coming-soon">投资人与商业化资源对接通道即将开启！</p>
+    <div class="tabs-container" id="themes-menu">
+        <button class="back-btn" onclick="showMainMenu()">← Back</button>
+        <a href="lesson1/index.html" class="tab-btn">Lesson 1: Body A</a>
+        <a href="lesson2/index.html" class="tab-btn">Lesson 2: Body B</a>
     </div>
 
     <script>
-        function showPanel(panelId) {
-            // 隐藏所有面板
-            document.querySelectorAll('.content-panel').forEach(panel => {
-                panel.classList.remove('active');
-            });
-            // 显示点击的面板
-            document.getElementById(panelId).classList.add('active');
+        function showThemes() {
+            // 隐藏主菜单，显示 12主题菜单
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('themes-menu').style.display = 'flex';
+        }
+
+        function showMainMenu() {
+            // 隐藏 12主题菜单，显示主菜单
+            document.getElementById('themes-menu').style.display = 'none';
+            document.getElementById('main-menu').style.display = 'flex';
         }
     </script>
 </body>
