@@ -1,7 +1,7 @@
 // 单词数据
 const vocabulary = [
   { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hair--_gb_1.mp3', image: '../image/lesson2/hair.png' },
+  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dictionary.cambridge.org/media/english/us_pron/h/hai/hair_/hair.mp3', image: '../image/lesson2/hair.png' },
   { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
   { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
   { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
