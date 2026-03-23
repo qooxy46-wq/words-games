@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'foot', chinese: '脚', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/foot--_gb_1.mp3', image: '../images/lesson1/foot.png' },
-  { id: 2, word: 'arm', chinese: '手臂', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/arm--_gb_1.mp3', image: '../images/lesson1/arm.png' },
-  { id: 3, word: 'chin', chinese: '下巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/chin--_gb_1.mp3', image: '../images/lesson1/chin.png' },
-  { id: 4, word: 'leg', chinese: '腿', audio: 'https://dictionary.cambridge.org/media/english/us_pron/l/leg/leg__/leg.mp3', image: '../images/lesson1/leg.png' },
-  { id: 5, word: 'nose', chinese: '鼻子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/nose--_gb_1.mp3', image: '../images/lesson1/nose.png' },
-  { id: 6, word: 'head', chinese: '头', audio: 'https://dictionary.cambridge.org/media/english/us_pron/h/hea/head_/head.mp3', image: '../images/lesson1/head.png' },
-  { id: 7, word: 'eye', chinese: '眼睛', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/eye--_gb_1.mp3', image: '../images/lesson1/eye.png' },
-  { id: 8, word: 'ear', chinese: '耳朵', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/ear--_gb_1.mp3', image: '../images/lesson1/ear.png' },
-  { id: 9, word: 'paw', chinese: '爪子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/paw--_gb_1.mp3', image: '../images/lesson1/paw.png' }
+  { id: 1, word: 'foot', chinese: '脚', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/foot--_gb_1.mp3', image: '../image/lesson1/foot.png' },
+  { id: 2, word: 'arm', chinese: '手臂', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/arm--_gb_1.mp3', image: '../image/lesson1/arm.png' },
+  { id: 3, word: 'chin', chinese: '下巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/chin--_gb_1.mp3', image: '../image/lesson1/chin.png' },
+  { id: 4, word: 'leg', chinese: '腿', audio: 'https://dictionary.cambridge.org/media/english/us_pron/l/leg/leg__/leg.mp3', image: '../image/lesson1/leg.png' },
+  { id: 5, word: 'nose', chinese: '鼻子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/nose--_gb_1.mp3', image: '../image/lesson1/nose.png' },
+  { id: 6, word: 'head', chinese: '头', audio: 'https://dictionary.cambridge.org/media/english/us_pron/h/hea/head_/head.mp3', image: '../image/lesson1/head.png' },
+  { id: 7, word: 'eye', chinese: '眼睛', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/eye--_gb_1.mp3', image: '../image/lesson1/eye.png' },
+  { id: 8, word: 'ear', chinese: '耳朵', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/ear--_gb_1.mp3', image: '../image/lesson1/ear.png' },
+  { id: 9, word: 'paw', chinese: '爪子', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/paw--_gb_1.mp3', image: '../image/lesson1/paw.png' }
 ];
 
 // 游戏进度数据
