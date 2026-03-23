@@ -1,441 +1,1067 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Body Parts English Game - Fun for Kids</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="game-container">
-        <!-- 游戏首页 -->
-        <div id="home-page" class="page active">
-            <div class="home-header">
-                <h1 style="color: rgb(39, 174, 96);">QUIRKY GO for words📖</h1>
-                <h2 style="color: rgb(21, 101, 192);">Learn Body Parts in English!</h2>
-            </div>
-            <div class="home-content">
-                <div class="game-rules">
-                    <h3 style="color: rgb(39, 174, 96);">How?</h3>
-                    <p>Welcome to the QUIRKY's! There are 5 fun stages to help you learn 9 body parts words.</p>
-                    <ul>
-                        <li><strong>STAGE 1: Listen &amp; Match</strong> - Listen to the word and choose the right picture</li>
-                        <li><strong>STAGE 2: Listen &amp; Read</strong> - Listen to the word and choose the right spelling</li>
-                        <li><strong>STAGE 3: Word &amp; Picture</strong> - Match words with their pictures</li>
-                        <li><strong>STAGE 4: Spelling Practice</strong> - Play 4 mini-games to practice spelling</li>
-                        <li><strong>STAGE 5: Dictation</strong> - Listen and write the word</li>
-                    </ul>
-                </div>
-                <div class="target-words">
-                    <h3 style="color: rgb(21, 101, 192);">Words to GO!</h3>
-                    <div class="words-grid">
-                        <div class="word-item">
-                            <img src="https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/33fbb3815a914359bc6708895434d20e~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=2026032017413706B5B34E23D4211847A2&amp;rrcfp=e75484ac&amp;x-expires=1774604497&amp;x-signature=6Fsaq%2BAYEc%2BSD8svfbEaWr8ThXE%3D" alt="foot">
-                            <span style="color: rgb(206, 147, 216);">FOOT</span>
-                            <span class="chinese">foot</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/2c87e0e8190445ad970ca77e88f95644~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=202603201741284AF4800C1F461043925A&amp;rrcfp=e75484ac&amp;x-expires=1774604489&amp;x-signature=dmXvzT3J5hiMyScBMD0uZeHKWgo%3D" alt="arm">
-                            <span style="color: rgb(206, 147, 216);">ARM</span>
-                            <span class="chinese">arm</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p26-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/b25a9e17fad6457285beac05a634e4e1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174120D422FC6D71665718A47D&amp;rrcfp=e75484ac&amp;x-expires=1774604480&amp;x-signature=GQHkUzJuX60yY8457WPXovqZAik%3D" alt="chin">
-                            <span style="color: rgb(206, 147, 216);">CHIN</span>
-                            <span class="chinese">chin</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/60b8872266874276a31867c821272a3f~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174107C6F57F682E1C041A608B&amp;rrcfp=e75484ac&amp;x-expires=1774604468&amp;x-signature=gJ2Swe6%2F%2BoqGTcJciCL7rCjn1d8%3D" alt="leg">
-                            <span style="color: rgb(206, 147, 216);">LEG</span>
-                            <span class="chinese">leg</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p6-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/a5bfa0f2200c46bdb6f0d859a63ed6eb~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174057D422FC6D716657189E21&amp;rrcfp=e75484ac&amp;x-expires=1774604458&amp;x-signature=Mry51wQMnXw95NJ6YEFlft%2F7OeY%3D" alt="nose">
-                            <span style="color: rgb(206, 147, 216);">NOSE</span>
-                            <span class="chinese">nose</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p9-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/8ece27475b2c450c89cdb5549be60ff1~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=202603201740374AF4800C1F46104385F7&amp;rrcfp=e75484ac&amp;x-expires=1774604438&amp;x-signature=FfcJMGzcg3ALVxdnsbZ30GweLVA%3D" alt="head">
-                            <span style="color: rgb(206, 147, 216);">HEAD</span>
-                            <span class="chinese">head</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/e8a6333ec867463aad0c828c06811a95~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174015B463FECB53D235472C5A&amp;rrcfp=e75484ac&amp;x-expires=1774604416&amp;x-signature=wzrmLstSWyaxlrcZ14TkAJcxpBA%3D" alt="eye">
-                            <span style="color: rgb(206, 147, 216);">EYE</span>
-                            <span class="chinese">eye</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p3-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/59c804a8af6d4fe4a754f33e86efbe45~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174005F1C55C95804AB51CA958&amp;rrcfp=e75484ac&amp;x-expires=1774604405&amp;x-signature=SuNTePuH7GK67Rb0rFfnb41VcSg%3D" alt="ear">
-                            <span style="color: rgb(206, 147, 216);">EAR</span>
-                            <span class="chinese">ear</span>
-                        </div>
-                        <div class="word-item">
-                            <img src="https://p11-flow-imagex-sign.byteimg.com/tos-cn-i-a9rns2rl98/rc/pc/code_assistant/242fb2e557c94525a3c58eb8a9ce2a4a~tplv-a9rns2rl98-image.image?lk3s=8e244e95&amp;rcl=20260320174026C77BCE7B562E6F1474D1&amp;rrcfp=e75484ac&amp;x-expires=1774604427&amp;x-signature=5v%2FoTQr0XJ%2BStBbHd82TOsquFhU%3D" alt="paw">
-                            <span style="color: rgb(206, 147, 216);">PAW</span>
-                            <span class="chinese">paw</span>
-                        </div>
-                    </div>
-                </div>
-                <button id="start-game-btn" class="primary-btn">GO!</button>
-            </div>
-        </div>
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        <!-- 闯关导航页 -->
-        <div id="level-nav-page" class="page">
-            <div class="page-header">
-                <h2>Choose a Stage</h2>
-                <button class="back-btn" onclick="showPage('home-page')">Back to Home</button>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="overall-progress"></div>
-                </div>
-                <div class="progress-text">Progress: <span id="progress-percentage">0%</span></div>
-            </div>
-            <div class="levels-container">
-                <div class="level-card" data-level="1">
-                    <div class="level-icon">1</div>
-                    <div class="level-info">
-                        <h3>Listen &amp; Match</h3>
-                        <p>Listen and choose the right picture</p>
-                    </div>
-                    <div class="level-status completed" id="level1-status">已完成</div>
-                </div>
-                <div class="level-card" data-level="2">
-                    <div class="level-icon">2</div>
-                    <div class="level-info">
-                        <h3>Listen &amp; Read</h3>
-                        <p>Listen and choose the right word</p>
-                    </div>
-                    <div class="level-status completed" id="level2-status">DONE</div>
-                </div>
-                <div class="level-card" data-level="3">
-                    <div class="level-icon">3</div>
-                    <div class="level-info">
-                        <h3>Word &amp; Picture</h3>
-                        <p>Match words with pictures</p>
-                    </div>
-                    <div class="level-status" id="level3-status">DONE</div>
-                </div>
-                <div class="level-card" data-level="4">
-                    <div class="level-icon">4</div>
-                    <div class="level-info">
-                        <h3>Spelling Practice</h3>
-                        <p>Play 4 mini-games to practice</p>
-                    </div>
-                    <div class="level-status completed" id="level4-status">DONE</div>
-                </div>
-                <div class="level-card" data-level="5">
-                    <div class="level-icon">5</div>
-                    <div class="level-info">
-                        <h3>Dictation</h3>
-                        <p>Listen and write the word</p>
-                    </div>
-                    <div class="level-status completed" id="level5-status">DONE</div>
-                </div>
-            </div>
-        </div>
+body {
+    font-family: 'Avenir Black', 'Bauhaus 93', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #F5F5F5;
+    color: #263238;
+    line-height: 1.6;
+    font-weight: bold;
+}
 
-        <!-- 关卡1：音义对应 -->
-        <div id="level1-page" class="page">
-            <div class="page-header">
-                <h2>STAGE 1: Listen &amp; Match</h2>
-                <button class="back-btn" onclick="showPage('level-nav-page')">Back to Menu</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Listen to the word. Click on the right picture!</p>
-                    <div class="score-display">Score: <span id="level1-score" style="color: rgb(21, 101, 192);">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="audio-control">
-                        <button id="play-audio-btn" class="audio-btn">
-                            <i class="fa fa-volume-up"></i> Play Word
-                        </button>
-                    </div>
-                    <div class="options-container" id="level1-options"></div>
-                </div>
-            </div>
-        </div>
+#game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
 
-        <!-- 关卡2：音词对应 -->
-        <div id="level2-page" class="page">
-            <div class="page-header">
-                <h2>STAGE 2: Listen &amp; Read</h2>
-                <button class="back-btn" onclick="showPage('level-nav-page')">Back to Menu</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Listen to the word. Click on the right spelling!</p>
-                    <div class="score-display">Score: <span id="level2-score">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="audio-control">
-                        <button id="play-audio-btn2" class="audio-btn">
-                            <i class="fa fa-volume-up"></i> Play Word
-                        </button>
-                    </div>
-                    <div class="options-container" id="level2-options"></div>
-                </div>
-            </div>
-        </div>
+/* 页面通用样式 */
+.page {
+    display: none;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 20px;
+    min-height: 80vh;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #C5E1A5;
+}
 
-        <!-- 关卡3：词义对应 -->
-        <div id="level3-page" class="page">
-            <div class="page-header">
-                <h2>STAGE 3: Word &amp; Picture</h2>
-                <button class="back-btn" onclick="showPage('level-nav-page')">Back to Menu</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Look at the word or picture. Choose the right match!</p>
-                    <div class="score-display">Score: <span id="level3-score">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="question-item" id="level3-question"></div>
-                    <div class="options-container" id="level3-options"></div>
-                </div>
-            </div>
-        </div>
+.page.active {
+    display: block;
+}
 
-        <!-- 关卡4：拼写检测 -->
-        <div id="level4-page" class="page">
-            <div class="page-header">
-                <h2>STAGE 4: Spelling Practice</h2>
-                <button class="back-btn" onclick="showPage('level-nav-page')">Back to Menu</button>
-            </div>
-            <div class="level-content">
-                <div class="sublevels-container">
-                    <div class="sublevel-card" data-sublevel="1">
-                        <div class="sublevel-icon">1</div>
-                        <div class="sublevel-info">
-                            <h3>Find the Word</h3>
-                            <p>Choose letters to make the word</p>
-                        </div>
-                        <div class="sublevel-status" id="sublevel1-status">已完成</div>
-                    </div>
-                    <div class="sublevel-card" data-sublevel="2">
-                        <div class="sublevel-icon">2</div>
-                        <div class="sublevel-info">
-                            <h3>Unscramble</h3>
-                            <p>Drag letters to make the word</p>
-                        </div>
-                        <div class="sublevel-status" id="sublevel2-status">DONE</div>
-                    </div>
-                    <div class="sublevel-card" data-sublevel="3">
-                        <div class="sublevel-icon">3</div>
-                        <div class="sublevel-info">
-                            <h3>Fill in Blanks</h3>
-                            <p>Fill missing letters in the word</p>
-                        </div>
-                        <div class="sublevel-status" id="sublevel3-status">DONE</div>
-                    </div>
-                    <div class="sublevel-card" data-sublevel="4">
-                        <div class="sublevel-icon">4</div>
-                        <div class="sublevel-info">
-                            <h3>Write the Word</h3>
-                            <p>Spell the word from the picture</p>
-                        </div>
-                        <div class="sublevel-status" id="sublevel4-status">DONE</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #C5E1A5;
+}
 
-        <!-- 关卡4.1：字母中识别单词 -->
-        <div id="sublevel1-page" class="page">
-            <div class="page-header">
-                <h2>Spelling: Find the Word</h2>
-                <button class="back-btn" onclick="showPage('level4-page')">Back to Spelling</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Choose letters from the grid to make the word for the picture.</p>
-                    <div class="score-display">Score: <span id="sublevel1-score">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="image-display" id="sublevel1-image"></div>
-                    <div class="letter-matrix" id="letter-matrix"></div>
-                    <div class="selected-letters" id="selected-letters"></div>
-                    <div class="control-buttons">
-                        <button id="check-word-btn" class="primary-btn">CHECK!</button>
-                        <button id="reset-letters-btn" class="secondary-btn">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+.page-header h2 {
+    color: #1B5E20;
+    font-size: 28px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-        <!-- 关卡4.2：乱序字母排序 -->
-        <div id="sublevel2-page" class="page">
-            <div class="page-header">
-                <h2>Spelling: Unscramble</h2>
-                <button class="back-btn" onclick="showPage('level4-page')">Back to Spelling</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Drag the scrambled letters to the right spots to make the word.</p>
-                    <div class="score-display">Score: <span id="sublevel2-score">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="image-display" id="sublevel2-image"></div>
-                    <div class="scrambled-letters" id="scrambled-letters"></div>
-                    <div class="word-slots" id="word-slots"></div>
-                    <div class="control-buttons">
-                        <button id="check-order-btn" class="primary-btn">CHECK!</button>
-                        <button id="reset-order-btn" class="secondary-btn">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+.back-btn {
+    background-color: #F8BBD0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
 
-        <!-- 关卡4.3：填写缺字母 -->
-        <div id="sublevel3-page" class="page">
-            <div class="page-header">
-                <h2>Spelling: Fill in Blanks</h2>
-                <button class="back-btn" onclick="showPage('level4-page')">Back to Spelling</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Fill in the missing letters to complete the word.</p>
-                    <div class="score-display">Score: <span id="sublevel3-score">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="image-display" id="sublevel3-image"></div>
-                    <div class="word-with-blanks" id="word-with-blanks"></div>
-                    <div class="letter-options" id="letter-options"></div>
-                    <div class="control-buttons">
-                        <button id="check-blanks-btn" class="primary-btn">CHECK!</button>
-                        <button id="reset-blanks-btn" class="secondary-btn">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+.back-btn:hover {
+    background-color: #F48FB1;
+    transform: translateY(-2px);
+}
 
-        <!-- 关卡4.4：根据意思拼写 -->
-        <div id="sublevel4-page" class="page">
-            <div class="page-header">
-                <h2>Spelling: Write the Word</h2>
-                <button class="back-btn" onclick="showPage('level4-page')">Back to Spelling</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Look at the picture and write the word.</p>
-                    <div class="score-display">Score: <span id="sublevel4-score">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="image-display" id="sublevel4-image"></div>
-                    <div class="chinese-hint" id="chinese-hint"></div>
-                    <div class="spelling-input">
-                        <input type="text" id="spelling-input" placeholder="Type the word">
-                    </div>
-                    <div class="control-buttons">
-                        <button id="check-spelling-btn" class="primary-btn">CHECK!</button>
-                        <button id="reset-spelling-btn" class="secondary-btn">Reset</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+/* 首页样式 */
+.home-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-        <!-- 关卡5：听写检测 -->
-        <div id="level5-page" class="page">
-            <div class="page-header">
-                <h2>STAGE 5: Dictation</h2>
-                <button class="back-btn" onclick="showPage('level-nav-page')">Back to Menu</button>
-            </div>
-            <div class="level-content">
-                <div class="instruction">
-                    <p>Listen to the word. Write it in the box!</p>
-                    <div class="score-display">Score: <span id="level5-score">0</span></div>
-                </div>
-                <div class="question-container">
-                    <div class="audio-control">
-                        <button id="play-audio-btn5" class="audio-btn">
-                            <i class="fa fa-volume-up"></i> Play Word
-                        </button>
-                    </div>
-                    <div class="chinese-hint" id="level5-chinese"></div>
-                    <div class="dictation-input">
-                        <input type="text" id="dictation-input" placeholder="Type the word">
-                    </div>
-                    <div class="control-buttons">
-                        <button id="check-dictation-btn" class="primary-btn">CHECK!</button>
-                        <button id="next-dictation-btn" class="secondary-btn">Next</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+.home-header h1 {
+    color: #ff6699;
+    font-size: 42px;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+}
 
-        <!-- 结算页面 -->
-        <div id="result-page" class="page">
-            <div class="page-header">
-                <h2>Game Complete!</h2>
-                <button class="back-btn" onclick="showPage('home-page')">Back to Home</button>
-            </div>
-            <div class="result-content">
-                <div class="total-score">
-                    <h3>Total Score</h3>
-                    <div class="score-number" id="total-score">0</div>
-                </div>
-                <div class="level-results">
-                    <h3>Stage Results</h3>
-                    <div class="level-result-item">
-                        <span>STAGE 1: Listen &amp; Match</span>
-                        <span id="result-level1">0</span>
-                    </div>
-                    <div class="level-result-item">
-                        <span>STAGE 2: Listen &amp; Read</span>
-                        <span id="result-level2">0</span>
-                    </div>
-                    <div class="level-result-item">
-                        <span>STAGE 3: Word &amp; Picture</span>
-                        <span id="result-level3">0</span>
-                    </div>
-                    <div class="level-result-item">
-                        <span>STAGE 4: Spelling Practice</span>
-                        <span id="result-level4">0</span>
-                    </div>
-                    <div class="level-result-item">
-                        <span>STAGE 5: Dictation</span>
-                        <span id="result-level5">0</span>
-                    </div>
-                </div>
-                <div class="encouragement" id="encouragement"></div>
-                <button id="restart-game-btn" class="primary-btn">Play Again!</button>
-            </div>
-        </div>
+.home-header h2 {
+    color: #6699cc;
+    font-size: 24px;
+    margin-bottom: 30px;
+}
 
-        <!-- 反馈弹窗 -->
-        <div id="feedback-modal" class="modal">
-            <div class="modal-content">
-                <div class="feedback-icon" id="feedback-icon"></div>
-                <div class="feedback-message" id="feedback-message" style="color: rgb(39, 174, 96);">Not today, but you'll get it! The CORRECT answer is paw</div>
-                <button class="modal-btn" onclick="closeModal()">OK!</button>
-            </div>
-        </div>
+.home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        <!-- 通关弹窗 -->
-        <div id="level-complete-modal" class="modal">
-            <div class="modal-content">
-                <div class="level-complete-icon">
-                    <i class="fa fa-trophy"></i>
-                </div>
-                <h3>关卡完成！</h3>
-                <div class="level-score" id="level-complete-score"></div>
-                <div class="level-feedback" id="level-complete-feedback">Good try! Practice a little more!</div>
-                <div class="modal-buttons">
-                    <button class="modal-btn" onclick="showPage('level-nav-page')">Back to Menu</button>
-                    <button class="modal-btn primary" id="next-level-btn">NEXT</button>
-                </div>
-            </div>
-        </div>
-    </div>
+.game-rules {
+    background-color: #f9f9f9;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
 
-    <!-- 音效控制 -->
-    <div class="sound-control">
-        <button id="sound-toggle" class="sound-btn" title="Sound On/Off">
-            <i class="fa fa-volume-up"></i>
-        </button>
-    </div>
+.game-rules h3 {
+    color: #ff6699;
+    margin-bottom: 15px;
+    font-size: 24px;
+    text-align: center;
+}
 
-    <script src="script.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+.game-rules p {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
 
-</body></html>
+.game-rules ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.game-rules li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 16px;
+}
+
+.game-rules li:before {
+    content: "★";
+    color: #ffcc00;
+    position: absolute;
+    left: 0;
+}
+
+.target-words {
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 30px;
+}
+
+.target-words h3 {
+    color: #6699cc;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.words-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.word-item {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.word-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.word-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.word-item span {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.word-item .chinese {
+    font-size: 16px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* 按钮样式 */
+.primary-btn {
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.primary-btn:hover {
+    background-color: #F57C00;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 152, 0, 0.6);
+}
+
+.secondary-btn {
+    background-color: #F8BBD0;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(248, 187, 208, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.secondary-btn:hover {
+    background-color: #F48FB1;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(248, 187, 208, 0.6);
+}
+
+.audio-btn {
+    background-color: #FF9800;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.audio-btn:hover {
+    background-color: #F57C00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 152, 0, 0.6);
+}
+
+.audio-btn i {
+    font-size: 20px;
+}
+
+/* 闯关导航页样式 */
+.progress-container {
+    margin-bottom: 40px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #27AE60;
+    border-radius: 10px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #666;
+}
+
+.levels-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.level-card {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.level-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.level-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #FF9800;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.level-info {
+    flex-grow: 1;
+}
+
+.level-info h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.level-info p {
+    color: #666;
+    font-size: 16px;
+}
+
+.level-status {
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.level-status.not-started {
+    background-color: #e0e0e0;
+    color: #666;
+}
+
+.level-status.in-progress {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.level-status.completed {
+    background-color: #27AE60;
+    color: white;
+}
+
+/* 关卡内容样式 */
+.level-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.instruction {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 18px;
+    color: #666;
+}
+
+.score-display {
+    font-size: 20px;
+    font-weight: bold;
+    color: #1565C0;
+    margin-top: 10px;
+}
+
+.question-container {
+    width: 100%;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.audio-control {
+    margin-bottom: 30px;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto 0;
+}
+
+.option-item {
+    background-color: #E8F5E9;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.option-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.option-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.option-item span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.question-item {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.question-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.question-item span {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff6699;
+}
+
+/* 拼写检测关卡样式 */
+.sublevels-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+}
+
+.sublevel-card {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sublevel-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.sublevel-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #99ccff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.sublevel-info h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.sublevel-info p {
+    color: #666;
+    font-size: 14px;
+}
+
+.sublevel-status {
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.sublevel-status.not-started {
+    background-color: #e0e0e0;
+    color: #666;
+}
+
+.sublevel-status.in-progress {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.sublevel-status.completed {
+    background-color: #66cc99;
+    color: white;
+}
+
+.image-display {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.image-display img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+}
+
+/* 字母矩阵样式 */
+.letter-matrix {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.letter-tile {
+    background-color: #99ccff;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.letter-tile:hover {
+    background-color: #6699cc;
+    transform: translateY(-2px);
+}
+
+.letter-tile.selected {
+    background-color: #ff6699;
+}
+
+.selected-letters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    min-height: 50px;
+}
+
+.selected-letter {
+    background-color: #ffcc00;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.remove-letter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff6699;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* 乱序字母排序样式 */
+.scrambled-letters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.scrambled-letter {
+    background-color: #99ccff;
+    color: white;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: grab;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    user-select: none;
+}
+
+.scrambled-letter:active {
+    cursor: grabbing;
+}
+
+.word-slots {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.word-slot {
+    background-color: #f0f0f0;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.word-slot.filled {
+    background-color: #ffcc00;
+    border: 2px solid #ffcc00;
+    color: white;
+}
+
+/* 填写缺字母样式 */
+.word-with-blanks {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.word-letter {
+    min-width: 30px;
+    text-align: center;
+}
+
+.word-blank {
+    min-width: 30px;
+    height: 40px;
+    border-bottom: 3px solid #ff6699;
+    text-align: center;
+    font-size: 24px;
+    padding: 5px;
+}
+
+.letter-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.option-letter {
+    background-color: #99ccff;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.option-letter:hover {
+    background-color: #6699cc;
+    transform: translateY(-2px);
+}
+
+.option-letter.selected {
+    background-color: #ff6699;
+}
+
+/* 根据意思拼写样式 */
+.chinese-hint {
+    font-size: 24px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.spelling-input, .dictation-input {
+    margin-bottom: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.spelling-input input, .dictation-input input {
+    width: 100%;
+    padding: 15px;
+    font-size: 24px;
+    border: 3px solid #99ccff;
+    border-radius: 10px;
+    text-align: center;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.spelling-input input:focus, .dictation-input input:focus {
+    border-color: #ff6699;
+    box-shadow: 0 0 10px rgba(255, 102, 153, 0.3);
+}
+
+.control-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* 结算页面样式 */
+.result-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.total-score {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.total-score h3 {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.score-number {
+    font-size: 72px;
+    font-weight: bold;
+    color: #ff6699;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.level-results {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 40px;
+}
+
+.level-results h3 {
+    color: #666;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.level-result-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.encouragement {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6699;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    width: 90%;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feedback-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+.feedback-icon.correct {
+    color: #66cc99;
+}
+
+.feedback-icon.wrong {
+    color: #ff6699;
+}
+
+.feedback-message {
+    font-size: 24px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.modal-btn {
+    background-color: #99ccff;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(153, 204, 255, 0.4);
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+.modal-btn:hover {
+    background-color: #6699cc;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(153, 204, 255, 0.6);
+}
+
+.modal-btn.primary {
+    background-color: #ff6699;
+    box-shadow: 0 4px 10px rgba(255, 102, 153, 0.4);
+}
+
+.modal-btn.primary:hover {
+    background-color: #ff3366;
+    box-shadow: 0 6px 15px rgba(255, 102, 153, 0.6);
+}
+
+.level-complete-icon {
+    font-size: 64px;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+.level-score {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ff6699;
+    margin-bottom: 15px;
+}
+
+.level-feedback {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* 音效控制样式 */
+.sound-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.sound-btn {
+    background-color: #ffcc00;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 204, 0, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sound-btn:hover {
+    background-color: #ffaa00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 204, 0, 0.6);
+}
+
+.sound-btn.muted {
+    background-color: #ccc;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .page {
+        padding: 20px;
+    }
+    
+    .home-header h1 {
+        font-size: 32px;
+    }
+    
+    .home-header h2 {
+        font-size: 20px;
+    }
+    
+    .words-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    
+    .word-item img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .options-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    .option-item img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .letter-matrix {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .level-card, .sublevel-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .level-icon, .sublevel-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .level-status, .sublevel-status {
+        margin-top: 10px;
+    }
+    
+    .control-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .secondary-btn {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .page {
+        padding: 15px;
+    }
+    
+    .home-header h1 {
+        font-size: 28px;
+    }
+    
+    .home-header h2 {
+        font-size: 18px;
+    }
+    
+    .words-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .word-item img {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .options-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .option-item img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .letter-matrix {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .letter-tile {
+        padding: 10px;
+        font-size: 20px;
+    }
+    
+    .word-slots {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .spelling-input input, .dictation-input input {
+        font-size: 20px;
+    }
+}
