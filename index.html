@@ -116,7 +116,7 @@
     <div class="tabs-container" id="main-menu">
         <button class="tab-btn" onclick="showThemes()">12大主题词汇打卡</button>
         <button class="tab-btn disabled">PU2打卡 (研发中)</button>
-        <button class="tab-btn disabled">VIP打卡 (研发中)</button>
+        <button class="tab-btn" style="background-color: #f39c12;" onclick="showVip()">🌟 VIP 專屬打卡</button>
     </div>
 
     <div class="tabs-container" id="themes-menu">
@@ -125,16 +125,27 @@
         <a href="lesson2/index.html" class="tab-btn">Lesson 2: Body B</a>
     </div>
 
+    <div class="tabs-container" id="vip-menu" style="display: none; flex-direction: column; gap: 20px; width: 100%; animation: fadeIn 0.5s;">
+        <button class="back-btn" onclick="showMainMenu()">← Back</button>
+        <a href="vip-lesson1/index.html" class="tab-btn" style="background-color: #f39c12;">VIP Level 1: 專屬挑戰</a>
+    </div>
+
     <script>
         function showThemes() {
-            // 隐藏主菜单，显示 12主题菜单
             document.getElementById('main-menu').style.display = 'none';
             document.getElementById('themes-menu').style.display = 'flex';
+            document.getElementById('vip-menu').style.display = 'none';
+        }
+
+        function showVip() {
+            document.getElementById('main-menu').style.display = 'none';
+            document.getElementById('themes-menu').style.display = 'none';
+            document.getElementById('vip-menu').style.display = 'flex';
         }
 
         function showMainMenu() {
-            // 隐藏 12主题菜单，显示主菜单
             document.getElementById('themes-menu').style.display = 'none';
+            document.getElementById('vip-menu').style.display = 'none';
             document.getElementById('main-menu').style.display = 'flex';
         }
     </script>
