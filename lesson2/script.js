@@ -53,9 +53,21 @@ document.addEventListener('DOMContentLoaded', function() {
   initSoundControl();
 });
 
-// 初始化首页
+// 初始化首页（增强自动化版）
 function initHomePage() {
-  // 绑定开始游戏按钮
+  // 1. 自动读取 vocabulary 数据，动态画出海报，直接覆盖旧图片！
+  const wordsGrid = document.querySelector('.words-grid');
+  if (wordsGrid) {
+      wordsGrid.innerHTML = vocabulary.map(word => `
+          <div class="word-item">
+              <img src="${word.image}" alt="${word.word}">
+              <span style="color: rgb(206, 147, 216); text-transform: uppercase;">${word.word}</span>
+              <span class="chinese">${word.chinese}</span>
+          </div>
+      `).join('');
+  }
+
+  // 2. 绑定开始游戏按钮
   document.getElementById('start-game-btn').addEventListener('click', function() {
     showPage('level-nav-page');
     updateLevelStatus();
