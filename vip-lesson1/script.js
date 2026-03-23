@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/vip-lesson1/你的圖片名.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/vip-lesson1/你的圖片名.png' }
+{ id: 1, word: 'crayon', chinese: '蜡笔', audio: 'https://dict.youdao.com/dictvoice?audio=crayon&type=1', image: '../image/vip-lesson1/crayon.jepg' },
+  { id: 2, word: 'rubber', chinese: '橡皮', audio: 'https://dict.youdao.com/dictvoice?audio=rubber&type=1', image: '../image/vip-lesson1/rubber.jepg' },
+  { id: 3, word: 'pencil case', chinese: '铅笔盒', audio: 'https://dict.youdao.com/dictvoice?audio=pencil%20case&type=1', image: '../image/vip-lesson1/pencil case.jepg' },
+  { id: 4, word: 'purple', chinese: '紫色', audio: 'https://dict.youdao.com/dictvoice?audio=purple&type=1', image: '../image/vip-lesson1/purple.jepg' },
+  { id: 5, word: 'white', chinese: '白色', audio: 'https://dict.youdao.com/dictvoice?audio=white&type=1', image: '../image/vip-lesson1/white.jepg' },
+  { id: 6, word: 'brown', chinese: '棕色', audio: 'https://dict.youdao.com/dictvoice?audio=brown&type=1', image: '../image/vip-lesson1/brown.jepg' },
+  { id: 7, word: 'cupboard', chinese: '橱柜', audio: 'https://dict.youdao.com/dictvoice?audio=cupboard&type=1', image: '../image/vip-lesson1/cupboard.jepg' },
+  { id: 8, word: 'board', chinese: '黑板', audio: 'https://dict.youdao.com/dictvoice?audio=board&type=1', image: '../image/vip-lesson1/board.jepg' },
+  { id: 9, word: 'bookcase', chinese: '书架', audio: 'https://dict.youdao.com/dictvoice?audio=bookcase&type=1', image: '../image/vip-lesson1/bookcase.jepg' }
 ];
 
 // 游戏进度数据
