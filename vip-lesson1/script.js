@@ -2,7 +2,7 @@
 const vocabulary = [
 { id: 1, word: 'crayon', chinese: '蜡笔', audio: 'https://dict.youdao.com/dictvoice?audio=crayon&type=1', image: '../image/vip-lesson1/crayon.png' },
   { id: 2, word: 'rubber', chinese: '橡皮', audio: 'https://dict.youdao.com/dictvoice?audio=rubber&type=1', image: '../image/vip-lesson1/rubber.png' },
-  { id: 3, word: 'pencil case', chinese: '铅笔盒', audio: 'https://dict.youdao.com/dictvoice?audio=pencil%20case&type=1', image: '../image/vip-lesson1/pencil case.png' },
+  { id: 3, word: 'pencil case', chinese: '铅笔盒', audio: 'https://dict.youdao.com/dictvoice?audio=pencil%20case&type=1', image: '../image/vip-lesson1/pencil_case.png' },
   { id: 4, word: 'purple', chinese: '紫色', audio: 'https://dict.youdao.com/dictvoice?audio=purple&type=1', image: '../image/vip-lesson1/purple.png' },
   { id: 5, word: 'white', chinese: '白色', audio: 'https://dict.youdao.com/dictvoice?audio=white&type=1', image: '../image/vip-lesson1/white.png' },
   { id: 6, word: 'brown', chinese: '棕色', audio: 'https://dict.youdao.com/dictvoice?audio=brown&type=1', image: '../image/vip-lesson1/brown.png' },
