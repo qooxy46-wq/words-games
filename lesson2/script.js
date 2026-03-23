@@ -8,7 +8,7 @@ const vocabulary = [
   { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
   { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
   { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/finger--_gb_1.mp3', image: '../image/lesson2/finger.png' }
+  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dictionary.cambridge.org/us/media/english/us_pron/f/fin/finge/finger.mp3', image: '../image/lesson2/finger.png' }
 ];
 
 // 游戏进度数据
