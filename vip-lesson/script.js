@@ -49,6 +49,17 @@ const soundEffects = {
 
 // DOM 加载完成后初始化游戏
 document.addEventListener('DOMContentLoaded', function() {
+
+    // ===== 新增的自動換招牌魔法開始 =====
+  // 1. 自動替換瀏覽器分頁標題
+  document.title = lessonConfig.pageTitle;
+  
+  // 2. 自動尋找並替換網頁內的 h2 大標題
+  const mainTitleElement = document.querySelector('.home-header h2');
+  if (mainTitleElement) {
+      mainTitleElement.textContent = lessonConfig.mainHeading;
+  }
+    
   // 从本地存储加载游戏进度
   loadGameProgress();
   
