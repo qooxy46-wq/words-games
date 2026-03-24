@@ -1,7 +1,7 @@
 // 關卡基本設定 (以後只要改這裡，網頁就會自動變)
 const lessonConfig = {
     pageTitle: "VIP Level 1 - QUIRKY GO",      // 這是瀏覽器最上方分頁標籤的名字
-    mainHeading: "Learn Classroom Objects!"    // 這是網頁裡面的副標題 (原本寫 Body Parts 的地方)
+    mainHeading: "Learn senses and family!"    // 這是網頁裡面的副標題 (原本寫 Body Parts 的地方)
 
 // 单词数据
 const vocabulary = [
