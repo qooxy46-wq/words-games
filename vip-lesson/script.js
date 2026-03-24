@@ -2,6 +2,7 @@
 const lessonConfig = {
     pageTitle: "VIP Level 1 - QUIRKY GO",      // 這是瀏覽器最上方分頁標籤的名字
     mainHeading: "Learn Classroom Objects!"    // 這是網頁裡面的副標題 (原本寫 Body Parts 的地方)
+    description: "Welcome to the QUIRKY's! There are 5 fun stages to help you learn these new words." 
 };
 
 // 单词数据
@@ -59,6 +60,12 @@ document.addEventListener('DOMContentLoaded', function() {
   if (mainTitleElement) {
       mainTitleElement.textContent = lessonConfig.mainHeading;
   }
+
+    const descElement = document.querySelector('.game-rules p');
+  if (descElement) {
+      descElement.textContent = lessonConfig.description;
+  }
+    
     
   // 从本地存储加载游戏进度
   loadGameProgress();
