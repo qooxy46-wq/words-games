@@ -970,15 +970,21 @@ body {
         font-size: 20px;
     }
     
+
     .words-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        /* 💡 关键修改：把原来的 repeat(3, 1fr) 改成 2 列，给单字更多呼吸空间 */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px; /* 稍微缩小一点间距，适应手机 */
     }
     
     .word-item img {
-        width: 80px;
-        height: 80px;
+        /* 💡 关键修改：因为变成了 2 列，图片可以适当放大一点点，保持圆形效果 */
+        width: 75px;
+        height: 75px;
     }
-    
+
+    /* ... 保持下面其他代码不变 ... */
+
     .options-container {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
