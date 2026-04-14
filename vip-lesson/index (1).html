@@ -209,77 +209,85 @@
     <script>
         // 【核心黑科技：极速降维压缩词库】
         // 这样可以直接绕过代码输出上限，成功载入接近 700 个单词！
-        const rawTextData = [
-            "change","改变","imagine","想象","or","或者","take","拿走","time","时间","care","关心","even","甚至","in","在内","suggest","建议","look","看",
-            "anxious","焦虑的","promise","承诺","check","检查","decide","决定","doubt","怀疑","make","制作","learn","学习","on","在上","return","返回","courage","勇气",
-            "unless","除非","hope","希望","worried","担心的","interest","兴趣","angry","生气的","surprise","惊讶","before","在之前","work","工作","by","方式","expect","期待",
-            "know","知道","disappoint","失望","run","运转","plan","计划","when","当","with","伴随","choice","选择","believe","相信","friend","朋友","leave","离开",
-            "lose","失去","so","因此","remind","提醒","proud","骄傲的","explain","解释","accept","接受","feel","感觉","find","发现","live","生活","realize","实现",
-            "off","关闭","show","展示","pleasant","愉快的","since","自从","strange","奇怪的","because","因为","act","行动","comfortable","舒服的","after","在之后","agree","同意",
-            "challenge","挑战","as","作为","effort","努力","success","成功","regret","后悔","admit","承认","though","尽管","ashamed","羞耻的","think","认为","continue","继续",
-            "until","直到","enjoy","享受","chance","机会","excited","激动的","experience","经历","follow","跟随","hold","坚持","ignore","忽视","if","如果","lucky","幸运的",
-            "notice","通知","pass","经过","patience","耐心","prepare","准备","curious","好奇的","still","仍然","give","给","and","和","remember","记得","call","打电话",
-            "satisfied","满意的","but","但是","carry","携带","control","控制","confident","自信的","difference","不同","discover","发现","get","得到","go","去","hand","手",
-            "help","帮助","order","命令","possible","可能的","once","曾经","put","放","puzzle","使困惑","over","结束","reason","理由","start","开始","responsibility","责任",
-            "to","目的","right","正确的","up","完成","serious","严肃的","attend","出席","break","打破","share","分享","calm","冷静","stop","阻止","concern","涉及","struggle","奋斗",
-            "confused","困惑的","teach","教","dream","梦想","through","穿过","failure","失败","treat","对待","hesitate","犹豫","appear","出现","idea","想法","drop","掉下",
-            "inform","通知","relief","如释重负","turn","翻转","walk","走路","write","写","energy","精力","grateful","感激的","honest","诚实的","love","爱","meeting","会议",
-            "escape","逃跑","mind","思维","forget","忘记","naturally","自然地","offer","提供","pain","痛苦","save","拯救","point","重点","strength","力量","practical","实际的",
-            "support","支持","read","读","argue","争论","describe","描述","receive","收到","embarrassed","尴尬的","express","表达","move","移动","normal","正常的","pay","支付",
-            "play","玩耍","question","问题","relaxed","放松的","serve","服务","tired","疲惫的","way","方式","ask","问","at","位置","come","来","directly","直接地","fear","恐惧",
-            "free","自由的","miss","错过","open","打开","talk","说","training","训练","understand","理解","advice","建议","appreciate","欣赏","arrange","安排","away","距离",
-            "beyond","超越","bring","带来","drive","驾驶","from","起点","gift","礼物","good","好的","happy","快乐的","lesson","教训","hard","困难的","many","很多","memory","记忆",
-            "pressure","压力","recognize","识别","send","发送","speak","说","stand","站立","result","结果","trust","信任","therefore","因此","search","搜索","warn","警告",
-            "trouble","麻烦","secret","秘密","while","当...时","useful","有用的","shock","震惊","watch","观看","slow","慢的","wonder","想知道","around","周围","step","迈步",
-            "back","后退","avoid","避免","suffer","遭受","bear","承受","blame","责备","tell","告诉","comment","评论","wisdom","智慧","confirm","证实","collect","收集","desire","渴望",
-            "allow","允许","create","创造","difficult","困难的","also","也","end","结束","easy","容易的","buy","购买","excuse","借口","judge","判断","cheer","欢呼","honor","荣耀",
-            "keep","保持","however","然而","place","放置","depend","依赖","impression","印象","protect","保护","guide","指导","improve","提高","push","推","hide","隐藏","inspire","激发",
-            "report","报告","lead","带领","rest","休息","like","喜欢","silently","沉默地","mean","意味着","stay","停留","need","需要","sympathy","同情","only","仅仅","test","测试",
-            "out","外面","try","尝试","persuade","说服","visit","拜访","refuse","拒绝","wait","等待","respect","尊重","weak","弱的","see","看","affect","影响","sense","感觉",
-            "amused","开心的","set","设定","some","一些","apply","应用","shake","摇","special","特别的","book","书籍","sign","标牌","study","学习","build","建造","spread","传播",
-            "word","单词","clear","清空","stick","粘贴","achieve","实现","cold","冷的","touch","触摸","admire","钦佩","complain","抱怨","cry","哭","value","价值","why","为什么",
-            "although","尽管","determine","决定","ability","能力","any","任何","ever","从来","along","沿着","brave","勇敢的","examine","检查","catch","抓住","fight","打斗",
-            "consider","考虑","fortunately","幸运地","behavior","行为","delight","高兴","frightened","害怕的","cautious","谨慎的","demand","要求","guess","猜测","clean","干净的",
-            "develop","发展","hear","听到","close","关闭","fall","掉落","how","如何","count","计数","manage","设法做到","hurt","伤害","empty","空的","necessary","必要的",
-            "intention","意图","every","每个","performance","表演","job","工作","explore","探索","sad","悲伤的","prove","证明","fair","公平的","skill","技术","reach","到达",
-            "familiar","熟悉的","finally","最终","force","强迫","grow","增长","lie","说谎","compare","比较","happen","发生","hit","打","kindness","善良","lay","放置","lift","提起",
-            "method","方法","observe","观察","obvious","明显的","otherwise","否则","popular","受欢迎的","praise","赞美","present","呈现","instruction","指令","jump","跳",
-            "purpose","目的","late","晚的","quiet","安静的","long","长的","quit","退出","message","消息","remove","移除","part","部分","request","请求","pick","挑选",
-            "require","要求","powerful","强有力的","scared","害怕的","predict","预测","simple","简单的","recover","恢复","spirit","精神","reward","回报","survive","幸存",
-            "unwilling","不情愿的","urge","敦促","yet","然而","add","增加","amazing","了不起的","announce","宣布","appointment","预约","attempt","企图","attract","吸引",
-            "approach","接近","bad","坏的","astonished","惊讶的","beside","在旁边","charge","收费","cover","覆盖","disturb","打扰","down","在下面","draw","画画","form","形成",
-            "guilty","内疚","lonely","孤独的","money","钱","where","哪里","record","记录","again","再次","reply","回复","approve","赞同","response","回应","attitude","态度",
-            "stress","压力","body","身体","sure","当然的","condition","条件","usual","通常的","dangerous","危险的","view","景观","declare","宣布","afraid","害怕的","deliver","传递",
-            "against","相反","design","设计","ambition","志向","devotion","奉献","beat","击败","discuss","讨论","benefit","益处","face","面对","breath","呼吸","finish","完成",
-            "class","班级","head","前往","compete","竞争","identify","识别","conclude","结论","important","重要的","connect","连接","just","仅仅","convince","说服","laugh","笑",
-            "cross","穿过","light","点亮","do","做","motivation","动机","during","在期间","new","新的","duty","责任","polite","礼貌的","eager","渴望的","poor","糟糕的",
-            "example","例子","position","位置","exchange","交换","post","发布","expose","暴露","prefer","偏好","eye","眼睛","pretend","假装","forgive","原谅","problem","问题",
-            "fun","快乐","related","相关的","generous","慷慨的","school","学校","goal","目标","travel","旅行","introduce","介绍","wake","醒来","nearly","几乎","whether","是否",
-            "no","否定","win","赢","note","笔记","witness","见证","opinion","意见","across","穿过","permit","允许","actually","实际上","raise","举起","aim","目标","rush","冲",
-            "annoy","令人厌烦的","safe","安全的","answer","回答","seek","寻求","apologize","道歉","select","选择","busy","忙碌的","settle","安定","case","情况","sleep","睡眠",
-            "common","普通的","smart","聪明的","companion","陪伴","smile","笑","copy","复制","task","任务","delay","推迟","upset","沮丧","desperate","迫切","waste","浪费",
-            "distance","距离","what","什么","far","远的","fix","固定","extra","额外的","flexible","灵活的","fade","消退","focus","聚焦","figure","算计","great","巨大的",
-            "greet","打招呼","firm","牢固的","harmful","有害的","fit","健康的","immediate","立即的","gathering","聚集","instead","反而","grade","年级","invite","邀请",
-            "gradually","逐渐地","lend","借出","habit","习惯","measure","测量","heavy","重的","nod","点头","office","办公室","old","老的","ordinary","普通的","pack","打包",
-            "perfect","完美的","produce","生产","home","家","mark","标记","match","匹配","mention","提及","might","可能","name","命名","pull","拉","punish","惩罚","remain","保持",
-            "occupy","占据","operation","操作","optimistic","乐观的","paper","纸张","risk","风险","pause","暂停","sharp","尖的","phone","电话","should","应该","picture","照片",
-            "sight","视野","positive","积极的","sorrow","悲伤","program","项目","sound","声音","progress","进步","store","商店","recommend","推荐","suddenly","突然地","reflect","反映",
-            "tear","眼泪","thus","因此","reliable","可靠的","warm","温暖","replace","替代","abandon","抛弃","rich","丰富的","above","在上面","sell","卖","advantage","优势",
-            "shape","形状","award","奖励","situation","情况","basically","基本地","spare","空闲的","borrow","借","spend","花费","bright","明亮的","story","故事","cause","造成",
-            "talent","才华","certain","确定的","thank","感谢","child","孩子","then","然后","commitment","承诺","throw","扔","complete","完成","trip","旅行","convenient","方便的"
+           const rawTextData = [
+    // Appliances (家用电器)
+    "camera", "照相机", "CD (player)", "CD播放机", "cell phone", "移动电话/手机", "clock", "时钟", "computer", "电脑", "cooker", "炉具", "digital camera", "数码相机", "DVD (player)", "DVD播放机", "electric", "电的", "electricity", "电/电能", "fridge", "冰箱", "gas", "煤气/天然气", "heating", "供暖/暖气", "lamp", "台灯", "laptop", "笔记本电脑", "lights", "灯", "mobile (phone)", "移动电话/手机", "MP3 player", "MP3播放器", "oven", "烤箱", "PC", "个人电脑", "phone", "电话", "radio", "收音机", "telephone", "电话", "television / TV", "电视", "video", "视频/录像机", "washing machine", "洗衣机",
+
+    // Clothes and Accessories (服装与配饰)
+    "bag", "包", "bathing suit", "泳衣", "belt", "腰带", "blouse", "女式衬衫", "boot", "靴子", "bracelet", "手镯", "cap", "帽子(鸭舌帽)", "chain", "链子/项链", "clothes", "衣服", "coat", "外套/大衣", "costume (swimming)", "游泳衣", "dress", "连衣裙", "earring", "耳环", "fashion", "时尚", "get dressed", "穿衣服", "glasses", "眼镜", "glove", "手套", "handbag", "手提包", "hat", "帽子", "jacket", "夹克衫", "jeans", "牛仔裤", "jewellery/jewelry", "珠宝/首饰", "jumper", "套头毛衣", "kit", "装备/成套工具", "necklace", "项链", "pocket", "口袋", "purse", "女式钱包", "raincoat", "雨衣", "ring", "戒指", "scarf", "围巾", "shirt", "衬衫", "shoes", "鞋子", "shorts", "短裤", "skirt", "短裙", "sock", "袜子", "suit", "西装/套装", "sunglasses", "太阳镜", "sweater", "毛衣", "swimming costume", "游泳衣", "swimsuit", "泳衣", "tie", "领带", "tights", "连裤袜/紧身裤", "trainers", "运动鞋", "trousers", "裤子", "try on", "试穿", "T-shirt", "T恤衫", "umbrella", "雨伞", "uniform", "制服", "wallet", "钱包", "watch", "手表", "wear", "穿/戴",
+
+    // Colours (颜色)
+    "black", "黑色", "blue", "蓝色", "brown", "棕色/褐色", "dark", "深色的/暗的", "golden", "金色的", "green", "绿色", "grey/gray", "灰色", "light", "浅色的/明亮的", "orange", "橙色", "pale", "苍白的/浅色的", "pink", "粉色", "purple", "紫色", "red", "红色", "silver", "银色", "white", "白色", "yellow", "黄色",
+
+    // Communication and Technology (通信与科技)
+    "address", "地址", "at / @", "在/艾特", "by post", "邮寄", "call", "呼叫/打电话", "chat", "聊天", "click", "点击", "conversation", "对话", "digital", "数码的/数字的", "dot", "点", "download", "下载", "email", "电子邮件/发邮件", "envelope", "信封", "file", "文件", "information", "信息", "internet", "互联网", "keyboard", "键盘", "mouse", "鼠标", "net", "网络", "online", "在线的", "password", "密码", "photograph", "照片", "photography", "摄影", "printer", "打印机", "screen", "屏幕", "software", "软件", "talk", "谈话", "text", "文本/发短信", "web", "网络", "web page", "网页", "website", "网站",
+
+    // Documents and Texts (文件与文本)
+    "ad/advertisement", "广告", "article", "文章", "bill", "账单", "book", "书", "card", "卡片", "comic", "漫画", "diary", "日记", "diploma", "文凭/毕业证书", "form", "表格", "letter", "信件", "licence", "执照/许可证", "magazine", "杂志", "menu", "菜单", "message", "消息/留言", "newspaper", "报纸", "note", "笔记/便条", "notebook", "笔记本", "passport", "护照", "postcard", "明信片", "project", "项目/课题", "textbook", "教科书", "ticket", "票",
+
+    // Education (教育)
+    "advanced", "高级的", "beginner", "初学者", "biology", "生物学", "blackboard", "黑板", "board", "黑板/白板", "bookshelf", "书架", "chemistry", "化学", "class", "班级/课程", "classmate", "同班同学", "classroom", "教室", "clever", "聪明的", "coach", "教练/辅导", "college", "学院", "course", "课程", "desk", "书桌", "dictionary", "字典", "eraser", "橡皮擦", "exam(ination)", "考试", "geography", "地理", "history", "历史", "homework", "家庭作业", "instructions", "指示/说明", "know", "知道/了解", "language", "语言", "learn", "学习", "lesson", "课", "level", "水平/等级", "library", "图书馆", "mark", "分数/记号", "maths/mathematics", "数学", "physics", "物理", "practice", "练习(名)", "practise", "练习(动)", "pupil", "小学生", "read", "阅读", "remember", "记得", "rubber", "橡皮擦", "ruler", "尺子", "school", "学校", "science", "科学", "student", "学生", "studies", "学习/研究", "study", "学习(动)", "subject", "科目", "teach", "教", "teacher", "教师", "term", "学期", "test", "测试/考试", "university", "大学",
+
+    // Entertainment and Media (娱乐与媒体)
+    "act", "表演", "actor", "演员", "adventure", "冒险", "art", "艺术", "board game", "棋盘游戏", "cartoon", "卡通/动画片", "chess", "国际象棋", "cinema", "电影院", "classical", "古典(音乐)", "competition", "比赛/竞争", "concert", "音乐会", "dance", "舞蹈/跳舞", "dancer", "舞者", "disco", "迪斯科", "draw", "画", "drawing", "图画", "drum", "鼓", "exhibition", "展览", "festival", "节日", "film", "电影/拍摄", "fun", "乐趣/有趣的", "go out", "出门/外出交际", "group", "团体/组合", "guitar", "吉他", "hip hop", "嘻哈音乐", "instrument", "乐器", "laugh", "笑", "listen to", "听", "look at", "看", "museum", "博物馆", "music", "音乐", "musician", "音乐家", "news", "新闻", "opera", "歌剧", "paint", "绘画/涂颜料", "painter", "画家", "photographer", "摄影师", "piano", "钢琴", "picture", "图片/画", "play", "戏剧", "pop", "流行(音乐)", "programme", "节目", "rock", "摇滚(音乐会)", "show", "表演/展览", "sing", "唱歌", "singer", "歌手", "song", "歌曲", "theatre", "剧院", "video game", "电子游戏", "watch", "观看",
+
+    // Family and Friends (家人与朋友)
+    "aunt", "阿姨/姑妈/舅妈", "boy", "男孩", "brother", "兄弟", "child", "孩子", "cousin", "表(堂)兄弟姐妹", "dad(dy)", "爸爸", "daughter", "女儿", "family", "家庭/家人", "father", "父亲", "friend", "朋友", "friendly", "友好的", "girl", "女孩", "grandchild", "孙辈", "grand(d)ad", "爷爷/外公", "granddaughter", "孙女/外孙女", "grandfather", "祖父/外祖父", "grandma", "奶奶/外婆", "grandmother", "祖母/外祖母", "grandpa", "爷爷/外公", "grandparent", "祖父母/外祖父母", "grandson", "孙子/外孙", "granny", "奶奶/外婆", "guest", "客人", "guy", "家伙/小伙子", "husband", "丈夫", "love", "爱", "married", "已婚的", "Miss", "小姐", "mother", "母亲", "Mr", "先生", "Mrs", "夫人/太太", "Ms", "女士", "mum(my)", "妈妈", "neighbour", "邻居", "parent", "父母", "pen-friend", "笔友", "sister", "姐妹", "son", "儿子", "surname", "姓氏", "teenager", "青少年", "uncle", "叔叔/伯伯/舅舅", "wife", "妻子",
+
+    // Food and Drink (食物与饮料)
+    "apple", "苹果", "bake", "烘焙", "banana", "香蕉", "barbecue", "烧烤", "biscuit", "饼干", "boil", "煮沸", "boiled", "煮熟的", "bottle", "瓶子", "bowl", "碗", "box", "盒子", "bread", "面包", "break", "休息/茶歇", "breakfast", "早餐", "burger", "汉堡包", "butter", "黄油", "cafe/café", "咖啡馆", "cafeteria", "自助餐厅", "cake", "蛋糕", "can", "罐头/易拉罐", "candy", "糖果", "carrot", "胡萝卜", "cereal", "谷物/麦片", "cheese", "奶酪", "chef", "厨师长", "chicken", "鸡肉/鸡", "chilli", "辣椒", "chips", "薯条", "chocolate", "巧克力", "coffee", "咖啡", "cola", "可乐", "cook", "厨师/烹饪", "cream", "奶油", "cup", "杯子", "curry", "咖喱", "cut", "切/块", "delicious", "美味的", "dessert", "甜点", "dinner", "晚餐", "dish", "菜肴/盘子", "drink", "饮料/喝", "eat", "吃", "egg", "鸡蛋", "fish", "鱼/鱼肉", "food", "食物", "fork", "叉子", "fried", "油炸的/煎的", "fruit", "水果", "garlic", "大蒜", "glass", "玻璃杯", "grape", "葡萄", "grilled", "烧烤的", "honey", "蜂蜜", "hungry", "饥饿的", "ice", "冰", "ice cream", "冰淇淋", "jam", "果酱", "juice", "果汁", "kitchen", "厨房", "knife", "刀子", "lemon", "柠檬", "lemonade", "柠檬水", "lunch", "午餐", "main course", "主菜", "meal", "一餐", "meat", "肉", "melon", "甜瓜/瓜类", "milk", "牛奶", "mineral water", "矿泉水", "mushroom", "蘑菇", "oil", "油", "omelette", "煎蛋卷", "onion", "洋葱", "orange", "橙子", "pasta", "意大利面", "pear", "梨", "pepper", "胡椒/辣椒", "picnic", "野餐", "piece of cake", "一块蛋糕/小菜一碟", "pizza", "比萨饼", "plate", "盘子", "potato", "土豆", "rice", "米饭", "roast", "烤/烤制的", "salad", "沙拉", "salt", "盐", "sandwich", "三明治", "sauce", "酱汁", "sausage", "香肠", "slice", "薄片", "snack", "零食/小吃", "soup", "汤", "steak", "牛排", "strawberry", "草莓", "sugar", "糖", "sweet", "糖果/甜的", "tea", "茶", "thirsty", "口渴的", "toast", "吐司/烤面包", "tomato", "西红柿", "vegetable", "蔬菜", "waiter", "服务员(男)", "waitress", "服务员(女)", "wash up", "洗餐具", "yog(h)urt", "酸奶",
+
+    // Health, Medicine and Exercise (健康、医疗与运动)
+    "accident", "事故", "ambulance", "救护车", "appointment", "预约", "arm", "手臂", "baby", "婴儿", "back", "背部", "blood", "血液", "body", "身体", "brain", "大脑", "break", "折断/打破", "check", "检查", "chemist", "药剂师/药店", "clean", "干净的/打扫", "cold", "感冒", "comb", "梳子", "danger", "危险", "dangerous", "危险的", "dead", "死亡的", "dentist", "牙医", "die", "死亡", "doctor", "医生", "Dr", "医生(缩写)", "ear", "耳朵", "exercise", "锻炼/运动", "eye", "眼睛", "face", "脸", "fall", "摔倒/落下", "feel", "感觉", "finger", "手指", "fit", "健康的/适合", "foot", "脚", "hair", "头发", "hand", "手", "head", "头", "health", "健康", "hear", "听见", "heart", "心脏", "hospital", "医院", "hurt", "伤害/疼痛", "ill", "生病的", "leg", "腿", "lie down", "躺下", "medicine", "药", "neck", "脖子", "nose", "鼻子", "nurse", "护士", "pain", "疼痛", "problem", "问题", "rest", "休息", "run", "跑步", "sick", "生病的", "soap", "肥皂", "stomach", "胃/肚子", "stomach ache", "胃痛/肚子痛", "swim", "游泳", "temperature", "温度/体温", "tired", "疲劳的", "tooth", "牙齿", "toothache", "牙痛", "toothbrush", "牙刷", "walk", "走路", "well", "健康的/好的",
+
+    // Hobbies and Leisure (爱好与休闲)
+    "camp", "露营", "camping", "露营", "campsite", "露营地", "club", "俱乐部", "collect", "收集", "cycling", "骑自行车运动", "go shopping", "去购物", "hobby", "爱好", "holidays", "假期", "join", "加入", "member", "成员", "park", "公园", "party", "派对", "quiz", "测验/知识问答", "tent", "帐篷",
+
+    // House and Home (房屋与家庭)
+    "apartment", "公寓", "armchair", "扶手椅", "bath(tub)", "浴缸", "bathroom", "浴室", "bed", "床", "bedroom", "卧室", "bin", "垃圾箱", "blanket", "毯子", "bookcase", "书柜", "carpet", "地毯", "chair", "椅子", "cupboard", "橱柜", "curtain", "窗帘", "dining room", "餐厅", "door", "门", "downstairs", "楼下", "drawer", "抽屉", "entrance", "入口", "flat", "公寓", "floor", "地板/楼层", "furniture", "家具", "garage", "车库", "garden", "花园", "gate", "大门", "hall", "门厅/大厅", "home", "家", "house", "房子", "key", "钥匙", "live", "居住", "living room", "客厅", "pillow", "枕头", "refrigerator", "冰箱", "roof", "屋顶", "room", "房间", "rubbish", "垃圾", "safe", "安全的", "shelf", "架子", "shower", "淋浴", "sink", "水槽", "sitting room", "起居室", "sofa", "沙发", "stay", "停留/逗留", "toilet", "厕所", "towel", "毛巾",
+
+    // Measurements (计量单位)
+    "centimetre / cm", "厘米", "day", "天/日", "degree", "度", "gram(me)", "克", "half", "一半", "hour", "小时", "kilo(gram[me])/kg", "千克/公斤", "kilometre/km", "千米/公里", "litre", "升", "metre", "米", "minute", "分钟", "moment", "片刻/瞬间", "quarter", "四分之一/一刻钟", "second", "秒", "week", "星期", "year", "年",
+
+    // Personal Feelings, Opinions and Experiences (情感与观点体验形容词)
+    "able", "能够的", "afraid", "害怕的", "alone", "独自的", "amazing", "令人惊叹的", "angry", "生气的", "bad", "坏的/糟糕的", "beautiful", "美丽的", "better", "更好的", "big", "大的", "bored", "无聊的/厌倦的", "boring", "乏味的", "brave", "勇敢的", "brilliant", "才华横溢的/极好的", "busy", "忙碌的", "careful", "仔细的/小心的", "clear", "清楚的/清晰的", "cool", "酷的/凉爽的", "different", "不同的", "difficult", "困难的", "excellent", "优秀的", "famous", "著名的", "fast", "快的", "favourite", "最喜欢的", "fine", "好的/健康的", "free", "自由的/免费的", "funny", "有趣的/滑稽的", "good", "好的", "great", "伟大的/极好的", "happy", "快乐的", "hard", "坚硬的/困难的", "heavy", "重的", "high", "高的", "important", "重要的", "interested", "感兴趣的", "interesting", "有趣的", "kind", "善良的", "lovely", "可爱的", "lucky", "幸运的", "modern", "现代的", "nice", "好的/令人愉快的", "noisy", "吵闹的", "old", "老的/旧的", "pleasant", "令人愉快的", "poor", "贫穷的/可怜的", "pretty", "漂亮的/相当的", "quick", "快的", "quiet", "安静的", "ready", "准备好的", "real", "真实的", "rich", "富有的", "right", "正确的/右边的", "slow", "慢的", "small", "小的", "soft", "柔软的", "sorry", "抱歉的/难过的", "special", "特别的", "strange", "奇怪的/陌生的", "strong", "强壮的", "sure", "确信的", "tall", "高的", "terrible", "可怕的/糟糕的", "unhappy", "不高兴的", "useful", "有用的", "worried", "担忧的", "wrong", "错误的", "young", "年轻的",
+
+    // Places: Buildings, Countryside, Town and City (地点：建筑、乡村与城市)
+    "area", "地区/区域", "bank", "银行", "block", "街区/大楼", "bookshop", "书店", "building", "建筑物", "bus station", "汽车站", "bus stop", "公交车站", "car park", "停车场", "castle", "城堡", "city centre", "市中心", "corner", "角落/拐角", "department store", "百货公司", "elevator", "电梯", "exit", "出口", "factory", "工厂", "farm", "农场", "field", "田野/田地", "forest", "森林", "grocery store", "杂货店", "guest-house", "宾馆/招待所", "hill", "小山", "hotel", "酒店", "island", "岛屿", "lake", "湖泊", "library", "图书馆", "lift", "电梯", "market", "市场", "motorway", "高速公路", "mountain", "山脉", "office", "办公室", "path", "小路/路径", "petrol station", "加油站", "pharmacy", "药店", "playground", "游乐场/操场", "police station", "警察局", "post office", "邮局", "railway station", "火车站", "railway", "铁路", "rainforest", "雨林", "river", "河流", "road", "道路", "roundabout", "环岛/转盘", "sea", "海洋", "shop", "商店", "sky", "天空", "sports centre", "体育中心", "square", "广场", "stadium", "体育场", "station", "车站", "street", "街道", "supermarket", "超市", "swimming pool", "游泳池", "town", "城镇", "underground", "地铁", "village", "村庄", "wood", "树林/木头", "zoo", "动物园",
+
+    // Shopping (购物)
+    "assistant", "助手/店员", "buy", "购买", "cash", "现金/兑现", "cent", "分(货币)", "change", "零钱/改变", "cheap", "便宜的", "cheque", "支票", "close", "关闭", "closed", "关闭的", "cost", "成本/花费", "credit card", "信用卡", "customer", "顾客", "dollar", "美元", "euro", "欧元", "expensive", "昂贵的", "for sale", "待售", "open", "打开/营业中的", "pay (for)", "支付", "penny", "便士", "pound", "英镑", "price", "价格", "receipt", "收据", "rent", "租金/租用", "shop assistant", "店员", "shopper", "购物者", "shopping", "购物", "spend", "花费", "store", "商店",
+
+    // Sport (运动)
+    "badminton", "羽毛球", "ball", "球", "baseball", "棒球", "basketball", "篮球", "bat", "球拍/球棒", "boat", "船", "catch", "抓住/接住", "climb", "攀爬", "cricket", "板球", "enter", "参加", "fishing", "钓鱼", "football", "足球", "football player", "足球运动员", "game", "游戏/比赛", "goal", "目标/进球", "golf", "高尔夫球", "hockey", "曲棍球/冰球", "luck", "运气", "play", "玩/打(球)", "player", "运动员/玩家", "pool", "游泳池/台球", "prize", "奖品/奖金", "race", "赛跑/比赛", "racket", "球拍", "ride", "骑/乘", "riding", "骑马(运动)", "rugby", "橄榄球", "sailing", "帆船运动", "skate", "滑冰/滑旱冰", "skateboard", "滑板", "ski", "滑雪", "skiing", "滑雪运动", "snowboard", "单板滑雪板", "snowboarding", "单板滑雪运动", "soccer", "足球", "sport(s)", "运动", "surf", "冲浪", "surfboard", "冲浪板", "surfboarding", "冲浪运动", "swimming", "游泳运动", "table tennis", "乒乓球", "team", "队伍", "tennis", "网球", "tennis player", "网球运动员", "throw", "扔/投掷", "v / versus", "对阵", "volleyball", "排球", "win", "赢得", "windsurfing", "帆板运动", "winner", "获胜者",
+
+    // The Natural World (自然界)
+    "air", "空气", "autumn", "秋天", "bee", "蜜蜂", "country", "乡村/国家", "countryside", "乡村地带", "desert", "沙漠", "east", "东/东方", "explorer", "探险家", "fire", "火", "flower", "花", "grass", "草", "grow", "生长/种植", "hot", "热的", "moon", "月亮", "north", "北/北方", "plant", "植物/种植", "rabbit", "兔子", "south", "南/南方", "space", "太空/空间", "spring", "春天", "star", "星星", "summer", "夏天", "tree", "树", "water", "水", "west", "西/西方", "winter", "冬天", "wool", "羊毛", "world", "世界",
+
+    // Time (时间)
+    "afternoon", "下午", "a.m./p.m.", "上午/下午", "birthday", "生日", "calendar", "日历", "century", "世纪", "daily", "每天的", "date", "日期", "evening", "晚上", "half (past)", "半(点)", "January - December", "一月至十二月", "meeting", "会议", "midnight", "午夜", "Monday - Sunday", "星期一至星期日", "month", "月", "monthly", "每月的", "morning", "早上", "night", "夜晚", "noon", "正午", "o'clock", "点钟", "past", "过(几点)", "quarter (past/to)", "一刻钟(过/差)", "time", "时间", "today", "今天", "tomorrow", "明天", "tonight", "今晚", "weekday", "工作日", "weekend", "周末", "weekly", "每周的", "working hours", "工作时间", "yesterday", "昨天",
+
+    // Travel and Transport (旅行与交通)
+    "(aero)/(air)plane", "飞机", "airport", "机场", "backpack", "背包", "bridge", "桥梁", "bus", "公共汽车", "car", "汽车", "case", "箱子", "coach", "长途客车", "delay", "延误/推迟", "delayed", "延误的", "drive", "驾驶", "driver", "司机", "driving licence", "驾驶执照", "engine", "引擎/发动机", "engineer", "工程师", "far", "远的", "flight", "航班", "fly", "飞行", "helicopter", "直升机", "journey", "旅程", "leave", "离开", "left", "左边", "luggage", "行李", "machine", "机器", "map", "地图", "mechanic", "机械师", "mirror", "镜子", "miss", "错过", "motorbike", "摩托车", "move", "移动", "park", "停车", "passenger", "乘客", "petrol", "汽油", "pilot", "飞行员", "platform", "站台", "repair", "修理", "return", "返回/退还", "right", "右边", "seat", "座位", "ship", "大船/轮船", "stop", "停止/车站", "straight on", "径直向前", "suitcase", "手提箱", "taxi", "出租车", "tour", "旅行/巡游", "tour guide", "导游", "tourist", "游客", "traffic", "交通", "traffic light", "红绿灯", "train", "火车", "tram", "有轨电车", "travel", "旅行", "trip", "出行/短途旅行", "tyre", "轮胎", "visit", "访问/参观", "visitor", "参观者/游客", "way", "道路/方式", "wheel", "轮子", "window", "窗户",
+
+    // Weather (天气)
+    "cloud", "云", "cloudy", "多云的", "cold", "寒冷的", "fog", "雾", "foggy", "有雾的", "rain", "雨/下雨", "snow", "雪/下雪", "storm", "暴风雨", "sunny", "晴朗的", "thunderstorm", "雷雨/雷暴", "weather", "天气", "wet", "潮湿的/下雨的", "wind", "风", "windy", "有风的",
+
+    // Work and Jobs (工作与职业)
+    "artist", "艺术家/画家", "boss", "老板", "business", "商业/生意", "businessman", "商人(男)", "businesswoman", "商人(女)", "cleaner", "清洁工", "company", "公司", "earn", "赚取", "farmer", "农民/农场主", "footballer", "足球运动员", "guide", "导游/向导", "job", "工作", "journalist", "记者", "king", "国王", "manager", "经理", "occupation", "职业", "painter", "画家/油漆工", "police officer", "警察", "queen", "女王/王后", "receptionist", "接待员", "secretary", "秘书", "staff", "全体职员", "uniform", "制服", "work", "工作", "worker", "工人", "writer", "作家/作者"
         ];
 
-        // 动态将一维数组切分为 50词 一轮的数据结构
+        // 动态将一维数组切分为 20词 一轮的数据结构
         const roundsData = [];
         let currentRound = [];
         for(let i = 0; i < rawTextData.length; i += 2) {
             currentRound.push({en: rawTextData[i], zh: rawTextData[i+1]});
-            if(currentRound.length === 50) {
+            if(currentRound.length === 20) {
                 roundsData.push(currentRound);
                 currentRound = [];
             }
         }
-        if(currentRound.length > 0) roundsData.push(currentRound); // 最后一轮不满50的兜底
+        if(currentRound.length > 0) roundsData.push(currentRound); // 最后一轮不满20的兜底
 
         // 初始化下拉菜单
         const selectElement = document.getElementById('round-select');
