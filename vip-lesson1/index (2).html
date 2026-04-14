@@ -341,41 +341,50 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // 建立一个全局的“弹药库”（音频缓存池）
-        const audioMagazine = {};
+        // --- 内存直读引擎 开始 ---
+        // 新版弹药库：存的不再是网络链接，而是解码后的纯粹音频内存数据（Buffer）
+        const audioBuffers = {};
 
-        // 战术动作：提前压入子弹（预加载本轮的4个音频）
+        // 战术动作：强制下载并解码存入内存
         function preloadAudio(wordsArray) {
+            if (!audioCtx) audioCtx = new AudioContext(); // 确保音频上下文已激活
+            
             wordsArray.forEach(wordObj => {
                 const word = wordObj.en;
-                // 如果弹药库里还没有这个词的音频，就开始悄悄加载
-                if (!audioMagazine[word]) {
+                if (!audioBuffers[word]) {
                     const safeWord = encodeURIComponent(word);
-                    const audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
-                    audio.preload = "auto"; // 指令浏览器尽可能提前下载好音频数据
-                    audioMagazine[word] = audio;
+                    const url = `https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`; // type=1 为英音
+                    
+                    // 强制抓取网络音频流，并解码到内存中
+                    fetch(url)
+                        .then(response => response.arrayBuffer())
+                        .then(arrayBuffer => audioCtx.decodeAudioData(arrayBuffer))
+                        .then(decodedData => {
+                            audioBuffers[word] = decodedData; // 完美装填入库
+                        })
+                        .catch(e => console.log(`[战术警报] ${word} 音频装填失败:`, e));
                 }
             });
         }
 
-        // 升级版：从弹药库中直接发射高音质音频
+        // 极速击发：直接读取内存数据播放
         function playHighQualityWord(word) {
-            let audio = audioMagazine[word];
+            if (!audioCtx) audioCtx = new AudioContext();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
             
-            // 极低概率的兜底：如果预加载失败，临时抓取
-            if (!audio) {
-                const safeWord = encodeURIComponent(word);
-                audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
-                audioMagazine[word] = audio;
+            if (audioBuffers[word]) {
+                // 如果内存里已经有这个词的解码数据，零延迟瞬间击发！
+                const source = audioCtx.createBufferSource();
+                source.buffer = audioBuffers[word];
+                source.connect(audioCtx.destination);
+                source.start(0);
+            } else {
+                // 极端情况兜底：如果网络极差没来得及预加载完，用原生机械音补位
+                console.log(`[战术降级] ${word} 内存未就绪，使用备用原生语音`);
+                speakVoice(word);
             }
-
-            // 重置音频时间为0，确保孩子就算疯狂连续点击，每次也能从头发出完整声音
-            audio.currentTime = 0; 
-            audio.play().catch(e => {
-                console.log("音频加载慢或被拦截，降级使用原生发音");
-                speakVoice(word); // 如果网络真的断了，系统原生发音立刻补位
-            });
         }
+        // --- 内存直读引擎 结束 ---
         
         function throwPoop(x, y) {
             const poop = document.createElement('div');
