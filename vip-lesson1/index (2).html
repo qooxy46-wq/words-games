@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>单词狙击手：极限词汇全库版</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        /* 明亮的高科技战术室，不回退黑暗 */
+        body {
+            margin: 0; padding: 0; background-color: #f8fafc; 
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+            color: #0f172a; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden; user-select: none; cursor: none; transition: background 0.3s ease; 
+            touch-action: manipulation;
+        }
+
+        body.enlightened {
+            background-color: #ffffff; 
+            box-shadow: inset 0 0 100px rgba(34, 197, 94, 0.2); 
+            cursor: default;
+        }
+
+        #game-container { width: 100vw; height: 100vh; position: relative; perspective: 1000px; }
+
+        #ui-top {
+            position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+            text-align: center; z-index: 100; background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px); padding: 10px 40px; border-radius: 12px; 
+            border: 2px solid #38bdf8; box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3); transition: 0.3s;
+        }
+
+        body.enlightened #ui-top { border-color: #22c55e; box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4); }
+        #mission-text { color: #0284c7; margin: 0 0 10px 0; font-size: 20px; font-weight: bold; letter-spacing: 2px; }
+        
+        .zh-highlight {
+            display: inline-block; background: #fffbeb; color: #ea580c; 
+            padding: 8px 25px; border-radius: 8px; font-size: 36px; font-weight: 900;
+            border: 3px solid #f59e0b; box-shadow: 0 0 25px rgba(245, 158, 11, 0.6);
+            letter-spacing: 2px; text-shadow: 1px 1px 0px #fff;
+        }
+
+        #round-select {
+            font-size: 16px; padding: 5px 10px; margin-bottom: 10px; border-radius: 5px;
+            border: 2px solid #38bdf8; background: #fff; color: #0284c7; font-weight: bold; cursor: pointer; outline: none;
+        }
+
+        #score-board {
+            position: absolute; top: 20px; right: 20px; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); border: 2px solid #38bdf8; color: #0f172a; 
+            padding: 10px 25px; border-radius: 6px; font-size: 20px; font-weight: bold;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3); transition: 0.3s;
+        }
+        body.enlightened #score-board { border-color: #22c55e; box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3); }
+        .highlight-number { color: #0284c7; font-size: 24px; margin: 0 5px; }
+        .poop-number { color: #ef4444; font-size: 24px; margin: 0 5px; } 
+
+        #target-area { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .target { position: absolute; width: 140px; height: 140px; border-radius: 50%; perspective: 1000px; animation: sway 4s infinite ease-in-out alternate; transition: opacity 0.8s ease; }
+        
+        .shortcut-badge {
+            position: absolute; top: -15px; left: -15px;
+            background: #0ea5e9; color: #fff; width: 36px; height: 36px;
+            border-radius: 50%; font-size: 22px; line-height: 32px; 
+            text-align: center; font-weight: 900;
+            border: 3px solid #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 50; font-family: monospace;
+        }
+
+        .target-inner { position: relative; width: 100%; height: 100%; transition: transform 0.01s linear; transform-style: preserve-3d; }
+        .target.flipped .target-inner { transform: rotateY(180deg); }
+        
+        .target-front, .target-back { position: absolute; width: 100%; height: 100%; border-radius: 50%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        
+        .target-front { background: repeating-radial-gradient( #ffffff 0, #ffffff 15px, #ef4444 15px, #ef4444 30px, #ffffff 30px, #ffffff 45px, #ef4444 45px, #ef4444 60px, #e2e8f0 60px, #e2e8f0 70px ); border: 2px solid #cbd5e1; }
+        .target-back { background: #ef4444; transform: rotateY(180deg); border: 6px solid #b91c1c; box-sizing: border-box; color: white; font-size: 22px; font-weight: 900; text-align: center; padding: 5px; }
+        .target-text { background: rgba(255, 255, 255, 0.95); color: #0f172a; padding: 5px 12px; border-radius: 4px; font-size: 22px; font-weight: 900; border: 2px solid #38bdf8; pointer-events: none; }
+        
+        .target.selected .target-inner { transform: scale(1.1); }
+        .target.selected .target-front { box-shadow: 0 0 30px #22c55e; }
+        .target.selected .target-text { background: #22c55e; color: #fff; border-color: #fff; }
+
+        @keyframes sway { 0% { transform: translateY(-10px); } 100% { transform: translateY(10px); } }
+
+        .bullet-hole { position: absolute; width: 12px; height: 12px; background: #333; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 40; box-shadow: inset 0 2px 5px rgba(0,0,0,0.8); transition: opacity 0.5s; }
+
+        .poop-splat { 
+            position: fixed; font-size: 40px; pointer-events: none; z-index: 10000; 
+            margin-top: 30px; margin-left: 50px; 
+            transform: translate(-50%, -50%) scale(0); 
+            animation: splat 1.5s ease-out forwards; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3)); 
+        }
+        @keyframes splat { 
+            0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 1; } 
+            15% { transform: translate(-50%, -50%) scale(1.2) rotate(25deg); } 
+            30% { transform: translate(-50%, -50%) scale(1) rotate(-15deg); } 
+            80% { transform: translate(-50%, -50%) scale(1) translateY(0); opacity: 1; } 
+            100% { transform: translate(-50%, -50%) scale(1) translateY(150px); opacity: 0; } 
+        }
+
+        .flower-drop { position: fixed; top: -15%; z-index: 10001; pointer-events: none; animation: flowerFall linear forwards; filter: drop-shadow(0 5px 5px rgba(0,0,0,0.2)); }
+        @keyframes flowerFall { 0% { transform: translateY(0) rotate(0deg) scale(0.8); opacity: 1; } 80% { opacity: 1; } 100% { transform: translateY(120vh) rotate(360deg) scale(1.2); opacity: 0; } }
+
+        .massive-poop {
+            position: fixed; pointer-events: none; z-index: 20001; 
+            animation: fallDown 3s ease-in forwards; filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+        }
+        @keyframes fallDown { 0% { transform: translateY(-20vh) rotate(0deg); opacity: 1; } 100% { transform: translateY(120vh) rotate(360deg); opacity: 0; } }
+
+        #scope { 
+            position: fixed; width: 300px; height: 300px; border: 3px solid #0284c7; border-radius: 50%; 
+            box-shadow: 0 0 0 9999px rgba(255, 255, 255, 0.4), inset 0 0 20px rgba(0,0,0,0.05); 
+            pointer-events: none; transform: translate(-50%, -50%); z-index: 999; 
+            transition: width 0.1s, height 0.1s, opacity 0.3s ease, box-shadow 0.3s ease; 
+        }
+        #scope.hidden { opacity: 0 !important; box-shadow: 0 0 0 0px rgba(0, 0, 0, 0) !important; }
+        #scope::before { content: ''; position: absolute; top: 50%; left: 0; width: 100%; height: 2px; background: rgba(239, 68, 68, 0.8); transform: translateY(-50%); }
+        #scope::after { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 100%; background: rgba(239, 68, 68, 0.8); transform: translateX(-50%); }
+        .scope-center { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; background: #ef4444; border-radius: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 5px rgba(239, 68, 68, 0.5);}
+        .recoil { width: 320px !important; height: 320px !important; margin-top: -15px; }
+
+        #praise-msg { position: absolute; top: 35%; left: 50%; transform: translate(-50%, -50%); font-size: 90px; font-weight: 900; color: #f59e0b; text-shadow: 0px 0px 20px #fde68a, 2px 2px 0 #fff; display: none; z-index: 900; pointer-events: none; font-style: italic; white-space: nowrap; }
+
+        #end-screen {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(255, 255, 255, 0.95); z-index: 20000;
+            display: none; flex-direction: column; justify-content: center; align-items: center;
+            cursor: default;
+        }
+        #end-title { font-size: 60px; font-weight: 900; margin-bottom: 20px; text-align: center; padding: 0 20px;}
+        #end-stats { font-size: 30px; color: #334155; margin-bottom: 40px; font-weight: bold; }
+        #restart-btn {
+            padding: 15px 40px; font-size: 24px; border: none; border-radius: 8px;
+            background: #0ea5e9; color: white; font-weight: bold; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); transition: 0.3s;
+        }
+        #restart-btn:hover { background: #0284c7; transform: scale(1.05); }
+
+        #ui-bottom { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 1000; cursor: default; }
+        button.nav-btn { padding: 10px 30px; font-size: 18px; border: 1px solid transparent; border-radius: 4px; cursor: pointer; font-weight: bold; letter-spacing: 1px; transition: 0.2s; }
+        #prev-btn { background: #334155; color: white; border-color: #475569; }
+        #prev-btn:hover:not(:disabled) { background: #475569; border-color: #94a3b8; }
+
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            body { cursor: auto; }
+            #ui-top { width: 90%; padding: 10px 15px; top: 10px; box-sizing: border-box; }
+            #mission-text { font-size: 16px; margin-bottom: 5px; }
+            .zh-highlight { font-size: 24px; padding: 5px 15px; }
+            #round-select { font-size: 14px; padding: 3px 8px; margin-bottom: 5px; }
+            #score-board {
+                top: auto; bottom: 85px; left: 50%; transform: translateX(-50%);
+                width: 95%; box-sizing: border-box; text-align: center;
+                font-size: 14px; padding: 8px; display: flex; justify-content: space-around;
+                border-radius: 8px;
+            }
+            .highlight-number, .poop-number { font-size: 18px; margin: 0 2px; }
+            .target { width: 75px; height: 75px; margin-left: 32px; }
+            .target-text { font-size: 13px; padding: 2px 4px; border-width: 1px; }
+            .target-back { font-size: 14px; padding: 2px; border-width: 3px; }
+            .shortcut-badge { width: 20px; height: 20px; font-size: 12px; line-height: 16px; top: -6px; left: -6px; border-width: 2px; }
+            #scope { display: none !important; }
+            #praise-msg { font-size: 50px; }
+            .poop-splat { font-size: 30px !important; margin-top: 10px; margin-left: 20px; }
+            #ui-bottom { bottom: 15px; width: 100%; justify-content: center; gap: 15px; }
+            button.nav-btn { padding: 10px 20px; font-size: 14px; }
+            #end-title { font-size: 28px; }
+            #end-stats { font-size: 18px; margin-bottom: 20px; }
+            #restart-btn { font-size: 18px; padding: 10px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="scope"><div class="scope-center"></div></div>
+        
+        <div id="score-board">
+            进度: <span id="level-progress" class="highlight-number">1/20</span> | 
+            🎯 得分: <span id="total-score" class="highlight-number">0</span> |
+            💩 吃屎: <span id="poop-score" class="poop-number">0</span>
+        </div>
+
+        <div id="ui-top">
+            <select id="round-select">
+                </select>
+            <h2 id="mission-text">🎯 锁定目标 (电脑按 1-4 键)</h2>
+            <div id="tactical-timer" style="margin-top: 5px; font-size: 18px; font-weight: bold; color: #ef4444; background: rgba(0,0,0,0.8); padding: 5px 15px; border-radius: 4px; border: 1px solid #ef4444; text-shadow: 0 0 5px #ef4444; display: inline-block;">⏱️ 战术倒计时: 15s</div>
+            <div id="current-zh" class="zh-highlight">加载中...</div>
+        </div>
+
+        <div id="target-area"></div>
+        <div id="praise-msg">HEADSHOT!</div>
+
+        <div id="ui-bottom">
+            <button id="prev-btn" class="nav-btn">◀ 撤退 (上一题)</button>
+        </div>
+    </div>
+
+    <div id="end-screen">
+        <h1 id="end-title">结算中...</h1>
+        <p id="end-stats">得分: 0 | 吃屎: 0</p>
+        <button id="restart-btn">再次挑战本轮</button>
+    </div>
+
+    <script>
+        // 【核心黑科技：极速降维压缩词库】
+        // 这样可以直接绕过代码输出上限，成功载入接近 700 个单词！
+           const rawTextData = [
+    // Appliances (家用电器)
+    "camera", "照相机", "CD (player)", "CD播放机", "cell phone", "移动电话/手机", "clock", "时钟", "computer", "电脑", "cooker", "炉具", "digital camera", "数码相机", "DVD (player)", "DVD播放机", "electric", "电的", "electricity", "电/电能", "fridge", "冰箱", "gas", "煤气/天然气", "heating", "供暖/暖气", "lamp", "台灯", "laptop", "笔记本电脑", "lights", "灯", "mobile (phone)", "移动电话/手机", "MP3 player", "MP3播放器", "oven", "烤箱", "PC", "个人电脑", "phone", "电话", "radio", "收音机", "telephone", "电话", "television / TV", "电视", "video", "视频/录像机", "washing machine", "洗衣机",
+
+    // Clothes and Accessories (服装与配饰)
+    "bag", "包", "bathing suit", "泳衣", "belt", "腰带", "blouse", "女式衬衫", "boot", "靴子", "bracelet", "手镯", "cap", "帽子(鸭舌帽)", "chain", "链子/项链", "clothes", "衣服", "coat", "外套/大衣", "costume (swimming)", "游泳衣", "dress", "连衣裙", "earring", "耳环", "fashion", "时尚", "get dressed", "穿衣服", "glasses", "眼镜", "glove", "手套", "handbag", "手提包", "hat", "帽子", "jacket", "夹克衫", "jeans", "牛仔裤", "jewellery/jewelry", "珠宝/首饰", "jumper", "套头毛衣", "kit", "装备/成套工具", "necklace", "项链", "pocket", "口袋", "purse", "女式钱包", "raincoat", "雨衣", "ring", "戒指", "scarf", "围巾", "shirt", "衬衫", "shoes", "鞋子", "shorts", "短裤", "skirt", "短裙", "sock", "袜子", "suit", "西装/套装", "sunglasses", "太阳镜", "sweater", "毛衣", "swimming costume", "游泳衣", "swimsuit", "泳衣", "tie", "领带", "tights", "连裤袜/紧身裤", "trainers", "运动鞋", "trousers", "裤子", "try on", "试穿", "T-shirt", "T恤衫", "umbrella", "雨伞", "uniform", "制服", "wallet", "钱包", "watch", "手表", "wear", "穿/戴",
+
+    // Colours (颜色)
+    "black", "黑色", "blue", "蓝色", "brown", "棕色/褐色", "dark", "深色的/暗的", "golden", "金色的", "green", "绿色", "grey/gray", "灰色", "light", "浅色的/明亮的", "orange", "橙色", "pale", "苍白的/浅色的", "pink", "粉色", "purple", "紫色", "red", "红色", "silver", "银色", "white", "白色", "yellow", "黄色",
+
+    // Communication and Technology (通信与科技)
+    "address", "地址", "at / @", "在/艾特", "by post", "邮寄", "call", "呼叫/打电话", "chat", "聊天", "click", "点击", "conversation", "对话", "digital", "数码的/数字的", "dot", "点", "download", "下载", "email", "电子邮件/发邮件", "envelope", "信封", "file", "文件", "information", "信息", "internet", "互联网", "keyboard", "键盘", "mouse", "鼠标", "net", "网络", "online", "在线的", "password", "密码", "photograph", "照片", "photography", "摄影", "printer", "打印机", "screen", "屏幕", "software", "软件", "talk", "谈话", "text", "文本/发短信", "web", "网络", "web page", "网页", "website", "网站",
+
+    // Documents and Texts (文件与文本)
+    "ad/advertisement", "广告", "article", "文章", "bill", "账单", "book", "书", "card", "卡片", "comic", "漫画", "diary", "日记", "diploma", "文凭/毕业证书", "form", "表格", "letter", "信件", "licence", "执照/许可证", "magazine", "杂志", "menu", "菜单", "message", "消息/留言", "newspaper", "报纸", "note", "笔记/便条", "notebook", "笔记本", "passport", "护照", "postcard", "明信片", "project", "项目/课题", "textbook", "教科书", "ticket", "票",
+
+    // Education (教育)
+    "advanced", "高级的", "beginner", "初学者", "biology", "生物学", "blackboard", "黑板", "board", "黑板/白板", "bookshelf", "书架", "chemistry", "化学", "class", "班级/课程", "classmate", "同班同学", "classroom", "教室", "clever", "聪明的", "coach", "教练/辅导", "college", "学院", "course", "课程", "desk", "书桌", "dictionary", "字典", "eraser", "橡皮擦", "exam(ination)", "考试", "geography", "地理", "history", "历史", "homework", "家庭作业", "instructions", "指示/说明", "know", "知道/了解", "language", "语言", "learn", "学习", "lesson", "课", "level", "水平/等级", "library", "图书馆", "mark", "分数/记号", "maths/mathematics", "数学", "physics", "物理", "practice", "练习(名)", "practise", "练习(动)", "pupil", "小学生", "read", "阅读", "remember", "记得", "rubber", "橡皮擦", "ruler", "尺子", "school", "学校", "science", "科学", "student", "学生", "studies", "学习/研究", "study", "学习(动)", "subject", "科目", "teach", "教", "teacher", "教师", "term", "学期", "test", "测试/考试", "university", "大学",
+
+    // Entertainment and Media (娱乐与媒体)
+    "act", "表演", "actor", "演员", "adventure", "冒险", "art", "艺术", "board game", "棋盘游戏", "cartoon", "卡通/动画片", "chess", "国际象棋", "cinema", "电影院", "classical", "古典(音乐)", "competition", "比赛/竞争", "concert", "音乐会", "dance", "舞蹈/跳舞", "dancer", "舞者", "disco", "迪斯科", "draw", "画", "drawing", "图画", "drum", "鼓", "exhibition", "展览", "festival", "节日", "film", "电影/拍摄", "fun", "乐趣/有趣的", "go out", "出门/外出交际", "group", "团体/组合", "guitar", "吉他", "hip hop", "嘻哈音乐", "instrument", "乐器", "laugh", "笑", "listen to", "听", "look at", "看", "museum", "博物馆", "music", "音乐", "musician", "音乐家", "news", "新闻", "opera", "歌剧", "paint", "绘画/涂颜料", "painter", "画家", "photographer", "摄影师", "piano", "钢琴", "picture", "图片/画", "play", "戏剧", "pop", "流行(音乐)", "programme", "节目", "rock", "摇滚(音乐会)", "show", "表演/展览", "sing", "唱歌", "singer", "歌手", "song", "歌曲", "theatre", "剧院", "video game", "电子游戏", "watch", "观看",
+
+    // Family and Friends (家人与朋友)
+    "aunt", "阿姨/姑妈/舅妈", "boy", "男孩", "brother", "兄弟", "child", "孩子", "cousin", "表(堂)兄弟姐妹", "dad(dy)", "爸爸", "daughter", "女儿", "family", "家庭/家人", "father", "父亲", "friend", "朋友", "friendly", "友好的", "girl", "女孩", "grandchild", "孙辈", "grand(d)ad", "爷爷/外公", "granddaughter", "孙女/外孙女", "grandfather", "祖父/外祖父", "grandma", "奶奶/外婆", "grandmother", "祖母/外祖母", "grandpa", "爷爷/外公", "grandparent", "祖父母/外祖父母", "grandson", "孙子/外孙", "granny", "奶奶/外婆", "guest", "客人", "guy", "家伙/小伙子", "husband", "丈夫", "love", "爱", "married", "已婚的", "Miss", "小姐", "mother", "母亲", "Mr", "先生", "Mrs", "夫人/太太", "Ms", "女士", "mum(my)", "妈妈", "neighbour", "邻居", "parent", "父母", "pen-friend", "笔友", "sister", "姐妹", "son", "儿子", "surname", "姓氏", "teenager", "青少年", "uncle", "叔叔/伯伯/舅舅", "wife", "妻子",
+
+    // Food and Drink (食物与饮料)
+    "apple", "苹果", "bake", "烘焙", "banana", "香蕉", "barbecue", "烧烤", "biscuit", "饼干", "boil", "煮沸", "boiled", "煮熟的", "bottle", "瓶子", "bowl", "碗", "box", "盒子", "bread", "面包", "break", "休息/茶歇", "breakfast", "早餐", "burger", "汉堡包", "butter", "黄油", "cafe/café", "咖啡馆", "cafeteria", "自助餐厅", "cake", "蛋糕", "can", "罐头/易拉罐", "candy", "糖果", "carrot", "胡萝卜", "cereal", "谷物/麦片", "cheese", "奶酪", "chef", "厨师长", "chicken", "鸡肉/鸡", "chilli", "辣椒", "chips", "薯条", "chocolate", "巧克力", "coffee", "咖啡", "cola", "可乐", "cook", "厨师/烹饪", "cream", "奶油", "cup", "杯子", "curry", "咖喱", "cut", "切/块", "delicious", "美味的", "dessert", "甜点", "dinner", "晚餐", "dish", "菜肴/盘子", "drink", "饮料/喝", "eat", "吃", "egg", "鸡蛋", "fish", "鱼/鱼肉", "food", "食物", "fork", "叉子", "fried", "油炸的/煎的", "fruit", "水果", "garlic", "大蒜", "glass", "玻璃杯", "grape", "葡萄", "grilled", "烧烤的", "honey", "蜂蜜", "hungry", "饥饿的", "ice", "冰", "ice cream", "冰淇淋", "jam", "果酱", "juice", "果汁", "kitchen", "厨房", "knife", "刀子", "lemon", "柠檬", "lemonade", "柠檬水", "lunch", "午餐", "main course", "主菜", "meal", "一餐", "meat", "肉", "melon", "甜瓜/瓜类", "milk", "牛奶", "mineral water", "矿泉水", "mushroom", "蘑菇", "oil", "油", "omelette", "煎蛋卷", "onion", "洋葱", "orange", "橙子", "pasta", "意大利面", "pear", "梨", "pepper", "胡椒/辣椒", "picnic", "野餐", "piece of cake", "一块蛋糕/小菜一碟", "pizza", "比萨饼", "plate", "盘子", "potato", "土豆", "rice", "米饭", "roast", "烤/烤制的", "salad", "沙拉", "salt", "盐", "sandwich", "三明治", "sauce", "酱汁", "sausage", "香肠", "slice", "薄片", "snack", "零食/小吃", "soup", "汤", "steak", "牛排", "strawberry", "草莓", "sugar", "糖", "sweet", "糖果/甜的", "tea", "茶", "thirsty", "口渴的", "toast", "吐司/烤面包", "tomato", "西红柿", "vegetable", "蔬菜", "waiter", "服务员(男)", "waitress", "服务员(女)", "wash up", "洗餐具", "yog(h)urt", "酸奶",
+
+    // Health, Medicine and Exercise (健康、医疗与运动)
+    "accident", "事故", "ambulance", "救护车", "appointment", "预约", "arm", "手臂", "baby", "婴儿", "back", "背部", "blood", "血液", "body", "身体", "brain", "大脑", "break", "折断/打破", "check", "检查", "chemist", "药剂师/药店", "clean", "干净的/打扫", "cold", "感冒", "comb", "梳子", "danger", "危险", "dangerous", "危险的", "dead", "死亡的", "dentist", "牙医", "die", "死亡", "doctor", "医生", "Dr", "医生(缩写)", "ear", "耳朵", "exercise", "锻炼/运动", "eye", "眼睛", "face", "脸", "fall", "摔倒/落下", "feel", "感觉", "finger", "手指", "fit", "健康的/适合", "foot", "脚", "hair", "头发", "hand", "手", "head", "头", "health", "健康", "hear", "听见", "heart", "心脏", "hospital", "医院", "hurt", "伤害/疼痛", "ill", "生病的", "leg", "腿", "lie down", "躺下", "medicine", "药", "neck", "脖子", "nose", "鼻子", "nurse", "护士", "pain", "疼痛", "problem", "问题", "rest", "休息", "run", "跑步", "sick", "生病的", "soap", "肥皂", "stomach", "胃/肚子", "stomach ache", "胃痛/肚子痛", "swim", "游泳", "temperature", "温度/体温", "tired", "疲劳的", "tooth", "牙齿", "toothache", "牙痛", "toothbrush", "牙刷", "walk", "走路", "well", "健康的/好的",
+
+    // Hobbies and Leisure (爱好与休闲)
+    "camp", "露营", "camping", "露营", "campsite", "露营地", "club", "俱乐部", "collect", "收集", "cycling", "骑自行车运动", "go shopping", "去购物", "hobby", "爱好", "holidays", "假期", "join", "加入", "member", "成员", "park", "公园", "party", "派对", "quiz", "测验/知识问答", "tent", "帐篷",
+
+    // House and Home (房屋与家庭)
+    "apartment", "公寓", "armchair", "扶手椅", "bath(tub)", "浴缸", "bathroom", "浴室", "bed", "床", "bedroom", "卧室", "bin", "垃圾箱", "blanket", "毯子", "bookcase", "书柜", "carpet", "地毯", "chair", "椅子", "cupboard", "橱柜", "curtain", "窗帘", "dining room", "餐厅", "door", "门", "downstairs", "楼下", "drawer", "抽屉", "entrance", "入口", "flat", "公寓", "floor", "地板/楼层", "furniture", "家具", "garage", "车库", "garden", "花园", "gate", "大门", "hall", "门厅/大厅", "home", "家", "house", "房子", "key", "钥匙", "live", "居住", "living room", "客厅", "pillow", "枕头", "refrigerator", "冰箱", "roof", "屋顶", "room", "房间", "rubbish", "垃圾", "safe", "安全的", "shelf", "架子", "shower", "淋浴", "sink", "水槽", "sitting room", "起居室", "sofa", "沙发", "stay", "停留/逗留", "toilet", "厕所", "towel", "毛巾",
+
+    // Measurements (计量单位)
+    "centimetre / cm", "厘米", "day", "天/日", "degree", "度", "gram(me)", "克", "half", "一半", "hour", "小时", "kilo(gram[me])/kg", "千克/公斤", "kilometre/km", "千米/公里", "litre", "升", "metre", "米", "minute", "分钟", "moment", "片刻/瞬间", "quarter", "四分之一/一刻钟", "second", "秒", "week", "星期", "year", "年",
+
+    // Personal Feelings, Opinions and Experiences (情感与观点体验形容词)
+    "able", "能够的", "afraid", "害怕的", "alone", "独自的", "amazing", "令人惊叹的", "angry", "生气的", "bad", "坏的/糟糕的", "beautiful", "美丽的", "better", "更好的", "big", "大的", "bored", "无聊的/厌倦的", "boring", "乏味的", "brave", "勇敢的", "brilliant", "才华横溢的/极好的", "busy", "忙碌的", "careful", "仔细的/小心的", "clear", "清楚的/清晰的", "cool", "酷的/凉爽的", "different", "不同的", "difficult", "困难的", "excellent", "优秀的", "famous", "著名的", "fast", "快的", "favourite", "最喜欢的", "fine", "好的/健康的", "free", "自由的/免费的", "funny", "有趣的/滑稽的", "good", "好的", "great", "伟大的/极好的", "happy", "快乐的", "hard", "坚硬的/困难的", "heavy", "重的", "high", "高的", "important", "重要的", "interested", "感兴趣的", "interesting", "有趣的", "kind", "善良的", "lovely", "可爱的", "lucky", "幸运的", "modern", "现代的", "nice", "好的/令人愉快的", "noisy", "吵闹的", "old", "老的/旧的", "pleasant", "令人愉快的", "poor", "贫穷的/可怜的", "pretty", "漂亮的/相当的", "quick", "快的", "quiet", "安静的", "ready", "准备好的", "real", "真实的", "rich", "富有的", "right", "正确的/右边的", "slow", "慢的", "small", "小的", "soft", "柔软的", "sorry", "抱歉的/难过的", "special", "特别的", "strange", "奇怪的/陌生的", "strong", "强壮的", "sure", "确信的", "tall", "高的", "terrible", "可怕的/糟糕的", "unhappy", "不高兴的", "useful", "有用的", "worried", "担忧的", "wrong", "错误的", "young", "年轻的",
+
+    // Places: Buildings, Countryside, Town and City (地点：建筑、乡村与城市)
+    "area", "地区/区域", "bank", "银行", "block", "街区/大楼", "bookshop", "书店", "building", "建筑物", "bus station", "汽车站", "bus stop", "公交车站", "car park", "停车场", "castle", "城堡", "city centre", "市中心", "corner", "角落/拐角", "department store", "百货公司", "elevator", "电梯", "exit", "出口", "factory", "工厂", "farm", "农场", "field", "田野/田地", "forest", "森林", "grocery store", "杂货店", "guest-house", "宾馆/招待所", "hill", "小山", "hotel", "酒店", "island", "岛屿", "lake", "湖泊", "library", "图书馆", "lift", "电梯", "market", "市场", "motorway", "高速公路", "mountain", "山脉", "office", "办公室", "path", "小路/路径", "petrol station", "加油站", "pharmacy", "药店", "playground", "游乐场/操场", "police station", "警察局", "post office", "邮局", "railway station", "火车站", "railway", "铁路", "rainforest", "雨林", "river", "河流", "road", "道路", "roundabout", "环岛/转盘", "sea", "海洋", "shop", "商店", "sky", "天空", "sports centre", "体育中心", "square", "广场", "stadium", "体育场", "station", "车站", "street", "街道", "supermarket", "超市", "swimming pool", "游泳池", "town", "城镇", "underground", "地铁", "village", "村庄", "wood", "树林/木头", "zoo", "动物园",
+
+    // Shopping (购物)
+    "assistant", "助手/店员", "buy", "购买", "cash", "现金/兑现", "cent", "分(货币)", "change", "零钱/改变", "cheap", "便宜的", "cheque", "支票", "close", "关闭", "closed", "关闭的", "cost", "成本/花费", "credit card", "信用卡", "customer", "顾客", "dollar", "美元", "euro", "欧元", "expensive", "昂贵的", "for sale", "待售", "open", "打开/营业中的", "pay (for)", "支付", "penny", "便士", "pound", "英镑", "price", "价格", "receipt", "收据", "rent", "租金/租用", "shop assistant", "店员", "shopper", "购物者", "shopping", "购物", "spend", "花费", "store", "商店",
+
+    // Sport (运动)
+    "badminton", "羽毛球", "ball", "球", "baseball", "棒球", "basketball", "篮球", "bat", "球拍/球棒", "boat", "船", "catch", "抓住/接住", "climb", "攀爬", "cricket", "板球", "enter", "参加", "fishing", "钓鱼", "football", "足球", "football player", "足球运动员", "game", "游戏/比赛", "goal", "目标/进球", "golf", "高尔夫球", "hockey", "曲棍球/冰球", "luck", "运气", "play", "玩/打(球)", "player", "运动员/玩家", "pool", "游泳池/台球", "prize", "奖品/奖金", "race", "赛跑/比赛", "racket", "球拍", "ride", "骑/乘", "riding", "骑马(运动)", "rugby", "橄榄球", "sailing", "帆船运动", "skate", "滑冰/滑旱冰", "skateboard", "滑板", "ski", "滑雪", "skiing", "滑雪运动", "snowboard", "单板滑雪板", "snowboarding", "单板滑雪运动", "soccer", "足球", "sport(s)", "运动", "surf", "冲浪", "surfboard", "冲浪板", "surfboarding", "冲浪运动", "swimming", "游泳运动", "table tennis", "乒乓球", "team", "队伍", "tennis", "网球", "tennis player", "网球运动员", "throw", "扔/投掷", "v / versus", "对阵", "volleyball", "排球", "win", "赢得", "windsurfing", "帆板运动", "winner", "获胜者",
+
+    // The Natural World (自然界)
+    "air", "空气", "autumn", "秋天", "bee", "蜜蜂", "country", "乡村/国家", "countryside", "乡村地带", "desert", "沙漠", "east", "东/东方", "explorer", "探险家", "fire", "火", "flower", "花", "grass", "草", "grow", "生长/种植", "hot", "热的", "moon", "月亮", "north", "北/北方", "plant", "植物/种植", "rabbit", "兔子", "south", "南/南方", "space", "太空/空间", "spring", "春天", "star", "星星", "summer", "夏天", "tree", "树", "water", "水", "west", "西/西方", "winter", "冬天", "wool", "羊毛", "world", "世界",
+
+    // Time (时间)
+    "afternoon", "下午", "a.m./p.m.", "上午/下午", "birthday", "生日", "calendar", "日历", "century", "世纪", "daily", "每天的", "date", "日期", "evening", "晚上", "half (past)", "半(点)", "January - December", "一月至十二月", "meeting", "会议", "midnight", "午夜", "Monday - Sunday", "星期一至星期日", "month", "月", "monthly", "每月的", "morning", "早上", "night", "夜晚", "noon", "正午", "o'clock", "点钟", "past", "过(几点)", "quarter (past/to)", "一刻钟(过/差)", "time", "时间", "today", "今天", "tomorrow", "明天", "tonight", "今晚", "weekday", "工作日", "weekend", "周末", "weekly", "每周的", "working hours", "工作时间", "yesterday", "昨天",
+
+    // Travel and Transport (旅行与交通)
+    "(aero)/(air)plane", "飞机", "airport", "机场", "backpack", "背包", "bridge", "桥梁", "bus", "公共汽车", "car", "汽车", "case", "箱子", "coach", "长途客车", "delay", "延误/推迟", "delayed", "延误的", "drive", "驾驶", "driver", "司机", "driving licence", "驾驶执照", "engine", "引擎/发动机", "engineer", "工程师", "far", "远的", "flight", "航班", "fly", "飞行", "helicopter", "直升机", "journey", "旅程", "leave", "离开", "left", "左边", "luggage", "行李", "machine", "机器", "map", "地图", "mechanic", "机械师", "mirror", "镜子", "miss", "错过", "motorbike", "摩托车", "move", "移动", "park", "停车", "passenger", "乘客", "petrol", "汽油", "pilot", "飞行员", "platform", "站台", "repair", "修理", "return", "返回/退还", "right", "右边", "seat", "座位", "ship", "大船/轮船", "stop", "停止/车站", "straight on", "径直向前", "suitcase", "手提箱", "taxi", "出租车", "tour", "旅行/巡游", "tour guide", "导游", "tourist", "游客", "traffic", "交通", "traffic light", "红绿灯", "train", "火车", "tram", "有轨电车", "travel", "旅行", "trip", "出行/短途旅行", "tyre", "轮胎", "visit", "访问/参观", "visitor", "参观者/游客", "way", "道路/方式", "wheel", "轮子", "window", "窗户",
+
+    // Weather (天气)
+    "cloud", "云", "cloudy", "多云的", "cold", "寒冷的", "fog", "雾", "foggy", "有雾的", "rain", "雨/下雨", "snow", "雪/下雪", "storm", "暴风雨", "sunny", "晴朗的", "thunderstorm", "雷雨/雷暴", "weather", "天气", "wet", "潮湿的/下雨的", "wind", "风", "windy", "有风的",
+
+    // Work and Jobs (工作与职业)
+    "artist", "艺术家/画家", "boss", "老板", "business", "商业/生意", "businessman", "商人(男)", "businesswoman", "商人(女)", "cleaner", "清洁工", "company", "公司", "earn", "赚取", "farmer", "农民/农场主", "footballer", "足球运动员", "guide", "导游/向导", "job", "工作", "journalist", "记者", "king", "国王", "manager", "经理", "occupation", "职业", "painter", "画家/油漆工", "police officer", "警察", "queen", "女王/王后", "receptionist", "接待员", "secretary", "秘书", "staff", "全体职员", "uniform", "制服", "work", "工作", "worker", "工人", "writer", "作家/作者"
+        ];
+
+        // 动态将一维数组切分为 20词 一轮的数据结构
+        const roundsData = [];
+        let currentRound = [];
+        for(let i = 0; i < rawTextData.length; i += 2) {
+            currentRound.push({en: rawTextData[i], zh: rawTextData[i+1]});
+            if(currentRound.length === 20) {
+                roundsData.push(currentRound);
+                currentRound = [];
+            }
+        }
+        if(currentRound.length > 0) roundsData.push(currentRound); // 最后一轮不满20的兜底
+
+        // 初始化下拉菜单
+        const selectElement = document.getElementById('round-select');
+        roundsData.forEach((round, index) => {
+            const opt = document.createElement('option');
+            opt.value = index;
+            opt.textContent = `第 ${index + 1} 轮 (共 ${round.length} 词)`;
+            selectElement.appendChild(opt);
+        });
+
+        const praises = ["HEADSHOT!", "精准命中!", "完美击杀!", "一发入魂!", "TARGET DOWN!"];
+
+        let currentRoundIndex = 0;
+        let vocabData = roundsData[currentRoundIndex];
+        let currentLevel = 0;
+        let levelCompleted = false; 
+        
+        let score = 0;
+        let poopCount = 0; 
+        let firstTry = true;
+        let countdownInterval; // 战术倒计时的保险丝
+
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        let audioCtx;
+
+        function playGunshot() {
+            if (!audioCtx) audioCtx = new AudioContext();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(120, audioCtx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.7, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+            osc.start(audioCtx.currentTime); osc.stop(audioCtx.currentTime + 0.1);
+        }
+
+        function speakVoice(text, isSuper = false) {
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            if(isSuper) {
+                utterance.rate = 1.1;
+                utterance.pitch = 1.5; 
+            } else {
+                utterance.rate = 0.9;
+            }
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // 建立一个全局的“弹药库”（音频缓存池）
+        const audioMagazine = {};
+
+        // 战术动作：提前压入子弹（预加载本轮的4个音频）
+        function preloadAudio(wordsArray) {
+            wordsArray.forEach(wordObj => {
+                const word = wordObj.en;
+                // 如果弹药库里还没有这个词的音频，就开始悄悄加载
+                if (!audioMagazine[word]) {
+                    const safeWord = encodeURIComponent(word);
+                    const audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
+                    audio.preload = "auto"; // 指令浏览器尽可能提前下载好音频数据
+                    audioMagazine[word] = audio;
+                }
+            });
+        }
+
+        // 升级版：从弹药库中直接发射高音质音频
+        function playHighQualityWord(word) {
+            let audio = audioMagazine[word];
+            
+            // 极低概率的兜底：如果预加载失败，临时抓取
+            if (!audio) {
+                const safeWord = encodeURIComponent(word);
+                audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
+                audioMagazine[word] = audio;
+            }
+
+            // 重置音频时间为0，确保孩子就算疯狂连续点击，每次也能从头发出完整声音
+            audio.currentTime = 0; 
+            audio.play().catch(e => {
+                console.log("音频加载慢或被拦截，降级使用原生发音");
+                speakVoice(word); // 如果网络真的断了，系统原生发音立刻补位
+            });
+        }
+        
+        function throwPoop(x, y) {
+            const poop = document.createElement('div');
+            poop.className = 'poop-splat';
+            poop.textContent = '💩';
+            poop.style.left = x + 'px'; poop.style.top = y + 'px';
+            document.body.appendChild(poop);
+            setTimeout(() => poop.remove(), 1500);
+        }
+
+        function throwMassivePoopPunishment() {
+            for(let i = 0; i < 40; i++) {
+                setTimeout(() => {
+                    const poop = document.createElement('div');
+                    poop.className = 'massive-poop';
+                    poop.textContent = '💩';
+                    poop.style.left = (Math.random() * 100) + 'vw';
+                    poop.style.fontSize = (Math.random() * 80 + 60) + 'px';
+                    document.body.appendChild(poop);
+                    setTimeout(() => poop.remove(), 3500);
+                }, i * 80); 
+            }
+        }
+
+        function triggerFlowerShower() {
+            const flowers = ['🌸', '🌹', '🌻', '🌺', '🌷', '🌼'];
+            for(let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const f = document.createElement('div'); f.className = 'flower-drop';
+                    f.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+                    f.style.left = Math.random() * 100 + 'vw';
+                    f.style.fontSize = (Math.random() * 40 + 30) + 'px';
+                    f.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+                    document.body.appendChild(f);
+                    setTimeout(() => f.remove(), 6000);
+                }, Math.random() * 2000); 
+            }
+        }
+
+        function updateScoreBoard() {
+            document.getElementById('total-score').textContent = score;
+            document.getElementById('poop-score').textContent = poopCount;
+            document.getElementById('level-progress').textContent = `${currentLevel + 1}/${vocabData.length}`;
+        }
+
+        document.getElementById('round-select').addEventListener('change', (e) => {
+            currentRoundIndex = parseInt(e.target.value);
+            vocabData = roundsData[currentRoundIndex];
+            e.target.blur(); 
+            resetGame();
+        });
+
+        function resetGame() {
+            document.getElementById('end-screen').style.display = 'none';
+            document.getElementById('scope').style.display = 'block';
+            document.body.style.cursor = 'none';
+            currentLevel = 0; score = 0; poopCount = 0; 
+            updateScoreBoard(); loadLevel(0);
+            
+            if(window.innerWidth <= 768) {
+                document.body.style.cursor = 'auto'; 
+            }
+        }
+
+        document.getElementById('restart-btn').addEventListener('click', resetGame);
+
+        const container = document.getElementById('game-container');
+        const scope = document.getElementById('scope');
+        const targetArea = document.getElementById('target-area');
+        const zhDisplay = document.getElementById('current-zh');
+        const praiseMsg = document.getElementById('praise-msg');
+        const prevBtn = document.getElementById('prev-btn');
+
+        document.addEventListener('mousemove', (e) => {
+            if (!document.body.classList.contains('enlightened')) { 
+                scope.style.left = e.clientX + 'px'; scope.style.top = e.clientY + 'px'; 
+            }
+        });
+
+        document.addEventListener('mousedown', (e) => {
+            if(levelCompleted) return; 
+            if(e.target.closest('#ui-top') || e.target.closest('#score-board') || e.target.closest('#ui-bottom')) return;
+
+            playGunshot(); 
+            if (!document.body.classList.contains('enlightened')) {
+                scope.classList.add('recoil'); setTimeout(() => scope.classList.remove('recoil'), 100);
+            }
+
+            const hole = document.createElement('div');
+            hole.className = 'bullet-hole'; hole.style.left = e.clientX + 'px'; hole.style.top = e.clientY + 'px';
+            targetArea.appendChild(hole);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if(levelCompleted || document.getElementById('end-screen').style.display === 'flex') return;
+            const key = e.key;
+            if(['1', '2', '3', '4'].includes(key)) {
+                const index = parseInt(key) - 1;
+                const targets = document.querySelectorAll('.target');
+                if(targets[index]) {
+                    const rect = targets[index].getBoundingClientRect();
+                    const centerX = rect.left + rect.width / 2;
+                    const centerY = rect.top + rect.height / 2;
+                    
+                    const event = new MouseEvent('mousedown', {
+                        bubbles: true, cancelable: true,
+                        clientX: centerX, clientY: centerY
+                    });
+                    targets[index].dispatchEvent(event);
+                }
+            }
+        });
+
+        function shuffle(array) { return array.sort(() => Math.random() - 0.5); }
+
+        function loadLevel(index) {
+            levelCompleted = false;
+            firstTry = true; 
+
+            document.body.classList.remove('enlightened');
+            scope.classList.remove('hidden');
+
+            targetArea.innerHTML = ''; 
+            // --- 倒计时核心防御逻辑 开始 ---
+            clearInterval(countdownInterval); // 第一时间！掐断上一个倒计时，防止逻辑崩塌
+            let timeLeft = 15; // 设定为15秒
+            const timerDisplay = document.getElementById('tactical-timer');
+            timerDisplay.textContent = `⏱️ 战术倒计时: ${timeLeft}s`;
+            timerDisplay.style.color = '#ef4444';
+
+            countdownInterval = setInterval(() => {
+                if(levelCompleted) {
+                    clearInterval(countdownInterval); // 如果孩子答对了，立刻停止倒计时
+                    return;
+                }
+                timeLeft--;
+                timerDisplay.textContent = `⏱️ 战术倒计时: ${timeLeft}s`;
+                
+                if(timeLeft <= 3) {
+                    timerDisplay.style.color = '#facc15'; // 最后3秒变黄，增加压迫感
+                }
+                
+                if(timeLeft <= 0) {
+                    clearInterval(countdownInterval); // 时间到，立刻停止计时
+                    if(!levelCompleted) {
+                        poopCount++; // 没答出来，强制吃屎
+                        updateScoreBoard();
+                        throwPoop(window.innerWidth / 2, window.innerHeight / 2);
+                        speakVoice("Time out!");
+                        
+                        // 强制结束本轮，自动进入下一题
+                        levelCompleted = true;
+                        document.querySelectorAll('.target').forEach(t => t.style.opacity = '0');
+                        
+                        setTimeout(() => {
+                            if (currentLevel < vocabData.length - 1) {
+                                currentLevel++;
+                                loadLevel(currentLevel);
+                            } else {
+                                showEndScreen();
+                            }
+                        }, 1200);
+                    }
+                }
+            }, 1000);
+            // --- 倒计时核心防御逻辑 结束 ---
+            praiseMsg.style.display = 'none';
+            
+            updateScoreBoard();
+
+            const currentData = vocabData[index];
+            zhDisplay.textContent = currentData.zh;
+
+            let optionsObj = [currentData];
+            let distractors = vocabData.filter(v => v.en !== currentData.en);
+            distractors = shuffle(distractors).slice(0, 3);
+            optionsObj = shuffle(optionsObj.concat(distractors));
+            // ---> 指令下达：立刻预加载这4个选项的音频！
+            preloadAudio(optionsObj);
+
+            const colWidth = 100 / 4; 
+
+            optionsObj.forEach((wordObj, i) => {
+                const target = document.createElement('div'); target.className = 'target';
+                const inner = document.createElement('div'); inner.className = 'target-inner';
+                const front = document.createElement('div'); front.className = 'target-front';
+                
+                const badge = document.createElement('div'); badge.className = 'shortcut-badge';
+                badge.textContent = i + 1;
+                front.appendChild(badge);
+
+                const span = document.createElement('span'); span.className = 'target-text';
+                span.textContent = wordObj.en; front.appendChild(span);
+                const back = document.createElement('div'); back.className = 'target-back';
+                back.textContent = wordObj.zh;
+
+                inner.appendChild(front); inner.appendChild(back); target.appendChild(inner);
+                
+                const leftPos = (i * colWidth) + (colWidth / 2);
+                const topPos = Math.random() * 45 + 25; 
+                target.style.left = `calc(${leftPos}% - 70px)`; target.style.top = topPos + '%';
+                target.style.animationDelay = (Math.random() * 2) + 's';
+
+                target.addEventListener('mousedown', (e) => {
+                    if (levelCompleted) return; 
+                    playHighQualityWord(wordObj.en); // 换成专业词典的高清美音
+
+                    if (wordObj.en !== currentData.en) {
+                        firstTry = false; 
+                        poopCount++; 
+                        updateScoreBoard(); 
+
+                        document.querySelectorAll('.target').forEach(t => t.classList.remove('selected'));
+                        
+                        target.classList.add('flipped');
+                        throwPoop(e.clientX, e.clientY);
+                        
+                        // 0.2秒极限翻转，逼迫瞬间记忆
+                        setTimeout(() => {
+                            target.classList.remove('flipped');
+                        }, 200);
+
+                    } else {
+                        levelCompleted = true;
+                        document.querySelectorAll('.target').forEach(t => t.classList.remove('selected'));
+                        target.classList.add('selected');
+
+                        let earnedPoint = false;
+                        if (firstTry) {
+                            score += 1;
+                            earnedPoint = true;
+                        }
+                        updateScoreBoard();
+
+                        document.body.classList.add('enlightened');
+                        scope.classList.add('hidden');
+                        
+                        document.querySelectorAll('.target:not(.selected)').forEach(t => t.style.opacity = '0');
+                        document.querySelectorAll('.bullet-hole').forEach(h => h.style.opacity = '0');
+
+                        if (earnedPoint && score > 0 && score % 10 === 0) {
+                            praiseMsg.textContent = "🔥 十连绝杀！🔥";
+                            praiseMsg.style.display = 'block';
+                            speakVoice("Godlike!", true); 
+                        } else {
+                            confetti({ particleCount: 150, spread: 120, origin: { y: 0.5 }, colors: ['#0284c7', '#facc15', '#22c55e'] });
+                            
+                            if (!firstTry) {
+                                praiseMsg.textContent = "终于击杀！下次争取一发入魂！";
+                                praiseMsg.style.color = "#f87171"; 
+                            } else {
+                                praiseMsg.textContent = praises[Math.floor(Math.random() * praises.length)];
+                                praiseMsg.style.color = "#f59e0b"; 
+                            }
+                            praiseMsg.style.display = 'block';
+                        }
+
+                        setTimeout(() => {
+                            if (currentLevel < vocabData.length - 1) {
+                                currentLevel++;
+                                loadLevel(currentLevel);
+                            } else {
+                                showEndScreen();
+                            }
+                        }, 1500);
+                    }
+                });
+                targetArea.appendChild(target);
+            });
+        }
+
+        prevBtn.addEventListener('click', () => { 
+            if (currentLevel > 0) { currentLevel--; loadLevel(currentLevel); } 
+        });
+
+        function showEndScreen() {
+            const endScreen = document.getElementById('end-screen');
+            const endTitle = document.getElementById('end-title');
+            const endStats = document.getElementById('end-stats');
+            
+            document.body.style.cursor = 'default';
+            document.getElementById('scope').style.display = 'none';
+
+            endStats.textContent = `🎯 最终得分：${score}  |  💩 吃屎总数：${poopCount}`;
+            
+            if (poopCount > score) {
+                endTitle.textContent = "🚨 战术翻车！吃屎吃到饱！太菜了吧老铁！ 🚨";
+                endTitle.style.color = "#ef4444";
+                throwMassivePoopPunishment();
+                speakVoice("Game over!", true);
+            } else if (score > poopCount) {
+                endTitle.textContent = "🏆 词汇特种兵，YYDS！这语感简直绝绝子！ 🏆";
+                endTitle.style.color = "#f59e0b";
+                triggerFlowerShower();
+                triggerFlowerShower(); 
+                confetti({ particleCount: 300, spread: 160, origin: { y: 0.3 } });
+                speakVoice("Unbelievable! You are the Best!", true);
+            } else {
+                endTitle.textContent = "⚖️ 五五开！差一点就被屎淹没了！ ⚖️";
+                endTitle.style.color = "#3b82f6";
+            }
+            
+            endScreen.style.display = 'flex';
+        }
+
+        document.body.addEventListener('click', () => {
+            if (!audioCtx) audioCtx = new AudioContext();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+        }, { once: true });
+
+        if(window.innerWidth <= 768) {
+            document.body.style.cursor = 'auto'; 
+        }
+
+        loadLevel(currentLevel);
+    </script>
+</body>
+</html>
