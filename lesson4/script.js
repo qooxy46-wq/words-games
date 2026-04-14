@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
+  { id: 1, word: 'pink', chinese: '粉色', audio: 'https://dict.youdao.com/dictvoice?audio=pink&type=1', image: '../images/vip-lesson1/pink.png' },
+  { id: 2, word: 'black', chinese: '黑色', audio: 'https://dict.youdao.com/dictvoice?audio=black&type=1', image: '../images/vip-lesson1/black.png' },
+  { id: 3, word: 'gold', chinese: '金色', audio: 'https://dict.youdao.com/dictvoice?audio=gold&type=1', image: '../images/vip-lesson1/gold.png' },
+  { id: 4, word: 'bronze', chinese: '古铜色', audio: 'https://dict.youdao.com/dictvoice?audio=bronze&type=1', image: '../images/vip-lesson1/bronze.png' },
+  { id: 5, word: 'teal', chinese: '蓝绿色', audio: 'https://dict.youdao.com/dictvoice?audio=teal&type=1', image: '../images/vip-lesson1/teal.png' },
+  { id: 6, word: 'sage', chinese: '鼠尾草绿', audio: 'https://dict.youdao.com/dictvoice?audio=sage&type=1', image: '../images/vip-lesson1/sage.png' },
+  { id: 7, word: 'ruby', chinese: '宝石红', audio: 'https://dict.youdao.com/dictvoice?audio=ruby&type=1', image: '../images/vip-lesson1/ruby.png' },
+  { id: 8, word: 'cyan', chinese: '青色', audio: 'https://dict.youdao.com/dictvoice?audio=cyan&type=1', image: '../images/vip-lesson1/cyan.png' },
+  { id: 9, word: 'red', chinese: '红色', audio: 'https://dict.youdao.com/dictvoice?audio=red&type=1', image: '../images/vip-lesson1/red.png' }
 ];
 
 // 游戏进度数据
