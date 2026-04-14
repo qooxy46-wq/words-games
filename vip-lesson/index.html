@@ -341,17 +341,42 @@
             window.speechSynthesis.speak(utterance);
         }
 
-        // 专门用于播放高质量单词发音的引擎 (type=1 是英音，type=2 是美音)
-        function playHighQualityWord(word) {
-            // 将带有空格的词（如 CD player）进行 URL 编码
-            const safeWord = encodeURIComponent(word);
-            // 调用有道词典的免费真人发音接口（这里默认使用 type=1 美音）
-            const audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
-            audio.play().catch(e => {
-                console.log("音频加载慢或被拦截，降级使用原生发音");
-                speakVoice(word); // 如果网络卡顿，自动降级用原来的浏览器发音兜底
+        // 建立一个全局的“弹药库”（音频缓存池）
+        const audioMagazine = {};
+
+        // 战术动作：提前压入子弹（预加载本轮的4个音频）
+        function preloadAudio(wordsArray) {
+            wordsArray.forEach(wordObj => {
+                const word = wordObj.en;
+                // 如果弹药库里还没有这个词的音频，就开始悄悄加载
+                if (!audioMagazine[word]) {
+                    const safeWord = encodeURIComponent(word);
+                    const audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
+                    audio.preload = "auto"; // 指令浏览器尽可能提前下载好音频数据
+                    audioMagazine[word] = audio;
+                }
             });
         }
+
+        // 升级版：从弹药库中直接发射高音质音频
+        function playHighQualityWord(word) {
+            let audio = audioMagazine[word];
+            
+            // 极低概率的兜底：如果预加载失败，临时抓取
+            if (!audio) {
+                const safeWord = encodeURIComponent(word);
+                audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
+                audioMagazine[word] = audio;
+            }
+
+            // 重置音频时间为0，确保孩子就算疯狂连续点击，每次也能从头发出完整声音
+            audio.currentTime = 0; 
+            audio.play().catch(e => {
+                console.log("音频加载慢或被拦截，降级使用原生发音");
+                speakVoice(word); // 如果网络真的断了，系统原生发音立刻补位
+            });
+        }
+        
         function throwPoop(x, y) {
             const poop = document.createElement('div');
             poop.className = 'poop-splat';
@@ -528,6 +553,8 @@
             let distractors = vocabData.filter(v => v.en !== currentData.en);
             distractors = shuffle(distractors).slice(0, 3);
             optionsObj = shuffle(optionsObj.concat(distractors));
+            // ---> 指令下达：立刻预加载这4个选项的音频！
+            preloadAudio(optionsObj);
 
             const colWidth = 100 / 4; 
 
