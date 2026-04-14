@@ -189,7 +189,7 @@
             <select id="round-select">
                 </select>
             <h2 id="mission-text">🎯 锁定目标 (电脑按 1-4 键)</h2>
-            <div id="tactical-timer" style="margin-top: 5px; font-size: 18px; font-weight: bold; color: #ef4444; background: rgba(0,0,0,0.8); padding: 5px 15px; border-radius: 4px; border: 1px solid #ef4444; text-shadow: 0 0 5px #ef4444; display: inline-block;">⏱️ 战术倒计时: 15s</div>
+            <div id="tactical-timer" style="margin-top: 5px; font-size: 18px; font-weight: bold; color: #ef4444; background: rgba(0,0,0,0.8); padding: 5px 15px; border-radius: 4px; border: 1px solid #ef4444; text-shadow: 0 0 5px #ef4444; display: inline-block;">⏱️ 战术倒计时: 10s</div>
             <div id="current-zh" class="zh-highlight">加载中...</div>
         </div>
 
@@ -510,7 +510,7 @@
             targetArea.innerHTML = ''; 
             // --- 倒计时核心防御逻辑 开始 ---
             clearInterval(countdownInterval); // 第一时间！掐断上一个倒计时，防止逻辑崩塌
-            let timeLeft = 15; // 设定为15秒
+            let timeLeft = 10; // 设定为10秒
             const timerDisplay = document.getElementById('tactical-timer');
             timerDisplay.textContent = `⏱️ 战术倒计时: ${timeLeft}s`;
             timerDisplay.style.color = '#ef4444';
