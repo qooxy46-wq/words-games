@@ -345,8 +345,8 @@
         function playHighQualityWord(word) {
             // 将带有空格的词（如 CD player）进行 URL 编码
             const safeWord = encodeURIComponent(word);
-            // 调用有道词典的免费真人发音接口（这里默认使用 type=2 美音）
-            const audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=2`);
+            // 调用有道词典的免费真人发音接口（这里默认使用 type=1 美音）
+            const audio = new Audio(`https://dict.youdao.com/dictvoice?audio=${safeWord}&type=1`);
             audio.play().catch(e => {
                 console.log("音频加载慢或被拦截，降级使用原生发音");
                 speakVoice(word); // 如果网络卡顿，自动降级用原来的浏览器发音兜底
