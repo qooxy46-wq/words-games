@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'pink', chinese: '粉色', audio: 'https://dict.youdao.com/dictvoice?audio=pink&type=1', image: '../images/vip-lesson1/pink.png' },
-  { id: 2, word: 'black', chinese: '黑色', audio: 'https://dict.youdao.com/dictvoice?audio=black&type=1', image: '../images/vip-lesson1/black.png' },
-  { id: 3, word: 'gold', chinese: '金色', audio: 'https://dict.youdao.com/dictvoice?audio=gold&type=1', image: '../images/vip-lesson1/gold.png' },
-  { id: 4, word: 'bronze', chinese: '古铜色', audio: 'https://dict.youdao.com/dictvoice?audio=bronze&type=1', image: '../images/vip-lesson1/bronze.png' },
-  { id: 5, word: 'teal', chinese: '蓝绿色', audio: 'https://dict.youdao.com/dictvoice?audio=teal&type=1', image: '../images/vip-lesson1/teal.png' },
-  { id: 6, word: 'sage', chinese: '鼠尾草绿', audio: 'https://dict.youdao.com/dictvoice?audio=sage&type=1', image: '../images/vip-lesson1/sage.png' },
-  { id: 7, word: 'ruby', chinese: '宝石红', audio: 'https://dict.youdao.com/dictvoice?audio=ruby&type=1', image: '../images/vip-lesson1/ruby.png' },
-  { id: 8, word: 'cyan', chinese: '青色', audio: 'https://dict.youdao.com/dictvoice?audio=cyan&type=1', image: '../images/vip-lesson1/cyan.png' },
-  { id: 9, word: 'red', chinese: '红色', audio: 'https://dict.youdao.com/dictvoice?audio=red&type=1', image: '../images/vip-lesson1/red.png' }
+  { id: 1, word: 'pink', chinese: '粉色', audio: 'https://dict.youdao.com/dictvoice?audio=pink&type=1', image: '../image/vip-lesson4/pink.png' },
+  { id: 2, word: 'black', chinese: '黑色', audio: 'https://dict.youdao.com/dictvoice?audio=black&type=1', image: '../image/vip-lesson4/black.png' },
+  { id: 3, word: 'gold', chinese: '金色', audio: 'https://dict.youdao.com/dictvoice?audio=gold&type=1', image: '../image/vip-lesson4/gold.png' },
+  { id: 4, word: 'bronze', chinese: '古铜色', audio: 'https://dict.youdao.com/dictvoice?audio=bronze&type=1', image: '../image/vip-lesson4/bronze.png' },
+  { id: 5, word: 'teal', chinese: '蓝绿色', audio: 'https://dict.youdao.com/dictvoice?audio=teal&type=1', image: '../image/vip-lesson4/teal.png' },
+  { id: 6, word: 'sage', chinese: '鼠尾草绿', audio: 'https://dict.youdao.com/dictvoice?audio=sage&type=1', image: '../image/vip-lesson4/sage.png' },
+  { id: 7, word: 'ruby', chinese: '宝石红', audio: 'https://dict.youdao.com/dictvoice?audio=ruby&type=1', image: '../image/vip-lesson4/ruby.png' },
+  { id: 8, word: 'cyan', chinese: '青色', audio: 'https://dict.youdao.com/dictvoice?audio=cyan&type=1', image: '../image/vip-lesson4/cyan.png' },
+  { id: 9, word: 'red', chinese: '红色', audio: 'https://dict.youdao.com/dictvoice?audio=red&type=1', image: '../image/vip-lesson4/red.png' }
 ];
 
 // 游戏进度数据
