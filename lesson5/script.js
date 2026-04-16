@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
+  { id: 1, word: 'father', chinese: '爸爸', audio: 'https://dict.youdao.com/dictvoice?audio=father&type=1', image: '../image/vip-lesson5/father.png' },
+  { id: 2, word: 'mother', chinese: '妈妈', audio: 'https://dict.youdao.com/dictvoice?audio=mother&type=1', image: '../image/vip-lesson5/mother.png' },
+  { id: 3, word: 'cousin', chinese: '堂/表兄弟姐妹', audio: 'https://dict.youdao.com/dictvoice?audio=cousin&type=1', image: '../image/vip-lesson5/cousin.png' },
+  { id: 4, word: 'baby', chinese: '婴儿', audio: 'https://dict.youdao.com/dictvoice?audio=baby&type=1', image: '../image/vip-lesson5/baby.png' },
+  { id: 5, word: 'family', chinese: '家庭', audio: 'https://dict.youdao.com/dictvoice?audio=family&type=1', image: '../image/vip-lesson5/family.png' },
+  { id: 6, word: 'grandma', chinese: '奶奶/外婆', audio: 'https://dict.youdao.com/dictvoice?audio=grandma&type=1', image: '../image/vip-lesson5/grandma.png' },
+  { id: 7, word: 'grandpa', chinese: '爷爷/外公', audio: 'https://dict.youdao.com/dictvoice?audio=grandpa&type=1', image: '../image/vip-lesson5/grandpa.png' },
+  { id: 8, word: 'uncle', chinese: '叔叔/舅舅', audio: 'https://dict.youdao.com/dictvoice?audio=uncle&type=1', image: '../image/vip-lesson5/uncle.png' },
+  { id: 9, word: 'aunt', chinese: '阿姨/姑姑', audio: 'https://dict.youdao.com/dictvoice?audio=aunt&type=1', image: '../image/vip-lesson5/aunt.png' },
 ];
 
 // 游戏进度数据
