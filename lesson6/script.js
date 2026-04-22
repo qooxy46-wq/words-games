@@ -1,15 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
-];
+  { id: 1, word: 'pig', chinese: '猪', audio: 'https://dict.youdao.com/dictvoice?audio=pig&type=1', image: '../image/lesson6/pig.png' },
+  { id: 2, word: 'cow', chinese: '奶牛', audio: 'https://dict.youdao.com/dictvoice?audio=cow&type=1', image: '../image/lesson6/cow.png' },
+  { id: 3, word: 'duck', chinese: '鸭子', audio: 'https://dict.youdao.com/dictvoice?audio=duck&type=1', image: '../image/lesson6/duck.png' },
+  { id: 4, word: 'goat', chinese: '山羊', audio: 'https://dict.youdao.com/dictvoice?audio=goat&type=1', image: '../image/lesson6/goat.png' },
+  { id: 5, word: 'sheep', chinese: '绵羊', audio: 'https://dict.youdao.com/dictvoice?audio=sheep&type=1', image: '../image/lesson6/sheep.png' },
+  { id: 6, word: 'horse', chinese: '马', audio: 'https://dict.youdao.com/dictvoice?audio=horse&type=1', image: '../image/lesson6/horse.png' },
+  { id: 7, word: 'turkey', chinese: '火鸡', audio: 'https://dict.youdao.com/dictvoice?audio=turkey&type=1', image: '../image/lesson6/turkey.png' },
+  { id: 8, word: 'rooster', chinese: '公鸡', audio: 'https://dict.youdao.com/dictvoice?audio=rooster&type=1', image: '../image/lesson6/rooster.png' },
+  { id: 9, word: 'mouse', chinese: '老鼠', audio: 'https://dict.youdao.com/dictvoice?audio=mouse&type=1', image: '../image/lesson6/mouse.png' },
 
 // 游戏进度数据
 let gameProgress = {
