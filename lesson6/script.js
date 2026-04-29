@@ -9,7 +9,7 @@ const vocabulary = [
   { id: 7, word: 'turkey', chinese: '火鸡', audio: 'https://dict.youdao.com/dictvoice?audio=turkey&type=1', image: '../image/lesson6/turkey.png' },
   { id: 8, word: 'rooster', chinese: '公鸡', audio: 'https://dict.youdao.com/dictvoice?audio=rooster&type=1', image: '../image/lesson6/rooster.png' },
   { id: 9, word: 'mouse', chinese: '老鼠', audio: 'https://dict.youdao.com/dictvoice?audio=mouse&type=1', image: '../image/lesson6/mouse.png' },
-
+]
 // 游戏进度数据
 let gameProgress = {
   currentLevel: 0, // 0: 未开始, 1-5: 对应五大关卡
