@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
+{ id: 1, word: 'wonderful', chinese: '极好的', audio: 'https://dict.youdao.com/dictvoice?audio=wonderful&type=1', image: '../image/lesson8/wonderful.png' },
+  { id: 2, word: 'sad', chinese: '难过的', audio: 'https://dict.youdao.com/dictvoice?audio=sad&type=1', image: '../image/lesson8/sad.png' },
+  { id: 3, word: 'happy', chinese: '开心的', audio: 'https://dict.youdao.com/dictvoice?audio=happy&type=1', image: '../image/lesson8/happy.png' },
+  { id: 4, word: 'angry', chinese: '生气的', audio: 'https://dict.youdao.com/dictvoice?audio=angry&type=1', image: '../image/lesson8/angry.png' },
+  { id: 5, word: 'sleepy', chinese: '困倦的', audio: 'https://dict.youdao.com/dictvoice?audio=sleepy&type=1', image: '../image/lesson8/sleepy.png' },
+  { id: 6, word: 'scared', chinese: '害怕的', audio: 'https://dict.youdao.com/dictvoice?audio=scared&type=1', image: '../image/lesson8/scared.png' },
+  { id: 7, word: 'brave', chinese: '勇敢的', audio: 'https://dict.youdao.com/dictvoice?audio=brave&type=1', image: '../image/lesson8/brave.png' },
+  { id: 8, word: 'good', chinese: '好的', audio: 'https://dict.youdao.com/dictvoice?audio=good&type=1', image: '../image/lesson8/good.png' },
+  { id: 9, word: 'hungry', chinese: '饥饿的', audio: 'https://dict.youdao.com/dictvoice?audio=hungry&type=1', image: '../image/lesson8/hungry.png' },
 ];
 
 // 游戏进度数据
