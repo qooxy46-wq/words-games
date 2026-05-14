@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
+ { id: 1, word: 'shoes', chinese: '鞋子', audio: 'https://dict.youdao.com/dictvoice?audio=shoes&type=1', image: '../image/lesson9/shoes.png' },
+  { id: 2, word: 'jacket', chinese: '夹克', audio: 'https://dict.youdao.com/dictvoice?audio=jacket&type=1', image: '../image/lesson9/jacket.png' },
+  { id: 3, word: 'T-shirt', chinese: 'T恤', audio: 'https://dict.youdao.com/dictvoice?audio=T-shirt&type=1', image: '../image/lesson9/T-shirt.png' },
+  { id: 4, word: 'hat', chinese: '帽子', audio: 'https://dict.youdao.com/dictvoice?audio=hat&type=1', image: '../image/lesson9/hat.png' },
+  { id: 5, word: 'scarf', chinese: '围巾', audio: 'https://dict.youdao.com/dictvoice?audio=scarf&type=1', image: '../image/lesson9/scarf.png' },
+  { id: 6, word: 'pants', chinese: '裤子', audio: 'https://dict.youdao.com/dictvoice?audio=pants&type=1', image: '../image/lesson9/pants.png' },
+  { id: 7, word: 'dress', chinese: '连衣裙', audio: 'https://dict.youdao.com/dictvoice?audio=dress&type=1', image: '../image/lesson9/dress.png' },
+  { id: 8, word: 'shirt', chinese: '衬衫', audio: 'https://dict.youdao.com/dictvoice?audio=shirt&type=1', image: '../image/lesson9/shirt.png' },
+  { id: 9, word: 'socks', chinese: '袜子', audio: 'https://dict.youdao.com/dictvoice?audio=socks&type=1', image: '../image/lesson9/socks.png' },
 ];
 
 // 游戏进度数据
