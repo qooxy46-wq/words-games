@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
+ { id: 1, word: 'rocket', chinese: '火箭', audio: 'https://dict.youdao.com/dictvoice?audio=rocket&type=1', image: '../image/lesson13/rocket.png' },
+  { id: 2, word: 'robot', chinese: '机器人', audio: 'https://dict.youdao.com/dictvoice?audio=robot&type=1', image: '../image/lesson13/robot.png' },
+  { id: 3, word: 'teddy bear', chinese: '泰迪熊', audio: 'https://dict.youdao.com/dictvoice?audio=teddy%20bear&type=1', image: '../image/lesson13/teddy_bear.png' },
+  { id: 4, word: 'doll', chinese: '洋娃娃', audio: 'https://dict.youdao.com/dictvoice?audio=doll&type=1', image: '../image/lesson13/doll.png' },
+  { id: 5, word: 'yo-yo', chinese: '溜溜球', audio: 'https://dict.youdao.com/dictvoice?audio=yo-yo&type=1', image: '../image/lesson13/yo-yo.png' },
+  { id: 6, word: 'ball', chinese: '球', audio: 'https://dict.youdao.com/dictvoice?audio=ball&type=1', image: '../image/lesson13/ball.png' },
+  { id: 7, word: 'train', chinese: '火车', audio: 'https://dict.youdao.com/dictvoice?audio=train&type=1', image: '../image/lesson13/train.png' },
+  { id: 8, word: 'jigsaw', chinese: '拼图', audio: 'https://dict.youdao.com/dictvoice?audio=jigsaw&type=1', image: '../image/lesson13/jigsaw.png' },
+  { id: 9, word: 'toy', chinese: '玩具', audio: 'https://dict.youdao.com/dictvoice?audio=toy&type=1', image: '../image/lesson13/toy.png' }
 ];
 
 // 游戏进度数据
