@@ -1,15 +1,15 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
-];
+ { id: 1, word: 'triangle', chinese: '三角形', audio: 'https://dict.youdao.com/dictvoice?audio=triangle&type=1', image: '../image/lesson12/triangle.png' },
+  { id: 2, word: 'circle', chinese: '圆形', audio: 'https://dict.youdao.com/dictvoice?audio=circle&type=1', image: '../image/lesson12/circle.png' },
+  { id: 3, word: 'square', chinese: '正方形', audio: 'https://dict.youdao.com/dictvoice?audio=square&type=1', image: '../image/lesson12/square.png' },
+  { id: 4, word: 'rectangle', chinese: '长方形', audio: 'https://dict.youdao.com/dictvoice?audio=rectangle&type=1', image: '../image/lesson12/rectangle.png' },
+  { id: 5, word: 'star', chinese: '星星/五角星', audio: 'https://dict.youdao.com/dictvoice?audio=star&type=1', image: '../image/lesson12/star.png' },
+  { id: 6, word: 'diamond', chinese: '菱形', audio: 'https://dict.youdao.com/dictvoice?audio=diamond&type=1', image: '../image/lesson12/diamond.png' },
+  { id: 7, word: 'oval', chinese: '椭圆形', audio: 'https://dict.youdao.com/dictvoice?audio=oval&type=1', image: '../image/lesson12/oval.png' },
+  { id: 8, word: 'heart', chinese: '心形', audio: 'https://dict.youdao.com/dictvoice?audio=heart&type=1', image: '../image/lesson12/heart.png' },
+  { id: 9, word: 'spade', chinese: '黑桃', audio: 'https://dict.youdao.com/dictvoice?audio=spade&type=1', image: '../image/lesson12/spade.png' }
+  ]
 
 // 游戏进度数据
 let gameProgress = {
