@@ -1,14 +1,14 @@
 // 单词数据
 const vocabulary = [
-  { id: 1, word: 'cheek', chinese: '脸颊', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/cheek--_gb_1.mp3', image: '../image/lesson2/cheek.png' },
-  { id: 2, word: 'hair', chinese: '头发', audio: 'https://dict.youdao.com/dictvoice?audio=hair&type=1', image: '../image/lesson2/hair.png' },
-  { id: 3, word: 'elbow', chinese: '手肘', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/elbow--_gb_1.mp3', image: '../image/lesson2/elbow.png' },
-  { id: 4, word: 'hands', chinese: '手', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/hand--_gb_1.mp3', image: '../image/lesson2/hands.png' },
-  { id: 5, word: 'knees', chinese: '膝盖', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/knee--_gb_1.mp3', image: '../image/lesson2/knees.png' },
-  { id: 6, word: 'mouth', chinese: '嘴巴', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/mouth--_gb_1.mp3', image: '../image/lesson2/mouth.png' },
-  { id: 7, word: 'shoulders', chinese: '肩膀', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/shoulder--_gb_1.mp3', image: '../image/lesson2/shoulders.png' },
-  { id: 8, word: 'teeth', chinese: '牙齿', audio: 'https://ssl.gstatic.com/dictionary/static/sounds/20200429/teeth--_gb_1.mp3', image: '../image/lesson2/teeth.png' },
-  { id: 9, word: 'finger', chinese: '手指', audio: 'https://dict.youdao.com/dictvoice?audio=finger&type=1', image: '../image/lesson2/finger.png' }
+ { id: 1, word: 'foggy', chinese: '多雾的/有雾的', audio: 'https://dict.youdao.com/dictvoice?audio=foggy&type=1', image: '../image/lesson14/foggy.png' },
+  { id: 2, word: 'cloudy', chinese: '多云的/阴天的', audio: 'https://dict.youdao.com/dictvoice?audio=cloudy&type=1', image: '../image/lesson14/cloudy.png' },
+  { id: 3, word: 'rainy', chinese: '下雨的/多雨的', audio: 'https://dict.youdao.com/dictvoice?audio=rainy&type=1', image: '../image/lesson14/rainy.png' },
+  { id: 4, word: 'sunny', chinese: '晴朗的/阳光充足的', audio: 'https://dict.youdao.com/dictvoice?audio=sunny&type=1', image: '../image/lesson14/sunny.png' },
+  { id: 5, word: 'windy', chinese: '刮风的/有风的', audio: 'https://dict.youdao.com/dictvoice?audio=windy&type=1', image: '../image/lesson14/windy.png' },
+  { id: 6, word: 'snowy', chinese: '下雪的/多雪的', audio: 'https://dict.youdao.com/dictvoice?audio=snowy&type=1', image: '../image/lesson14/snowy.png' },
+  { id: 7, word: 'weather', chinese: '天气', audio: 'https://dict.youdao.com/dictvoice?audio=weather&type=1', image: '../image/lesson14/weather.png' },
+  { id: 8, word: 'stormy', chinese: '暴风雨的', audio: 'https://dict.youdao.com/dictvoice?audio=stormy&type=1', image: '../image/lesson14/stormy.png' },
+  { id: 9, word: 'gloomy', chinese: '阴暗的/忧郁的', audio: 'https://dict.youdao.com/dictvoice?audio=gloomy&type=1', image: '../image/lesson14/gloomy.png' }
 ];
 
 // 游戏进度数据
