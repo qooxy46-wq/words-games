@@ -570,6 +570,8 @@ body {
 
 .selected-letters {
     display: flex;
+    flex-wrap: wrap;           
+    justify-content: center;   
     gap: 10px;
     margin-bottom: 30px;
     min-height: 50px;
@@ -608,6 +610,8 @@ body {
 /* 乱序字母排序样式 */
 .scrambled-letters {
     display: flex;
+    flex-wrap: wrap;           /* Add this line */
+    justify-content: center;   /* Add this line */
     gap: 10px;
     margin-bottom: 30px;
 }
@@ -634,6 +638,8 @@ body {
 
 .word-slots {
     display: flex;
+    flex-wrap: wrap;           /* Add this line */
+    justify-content: center;   /* Add this line */
     gap: 10px;
     margin-bottom: 30px;
 }
@@ -660,6 +666,8 @@ body {
 /* 填写缺字母样式 */
 .word-with-blanks {
     display: flex;
+    flex-wrap: wrap;           /* Add this line */
+    justify-content: center;   /* Add this line */
     gap: 5px;
     margin-bottom: 30px;
     font-size: 28px;
