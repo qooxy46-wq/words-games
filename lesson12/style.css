@@ -570,6 +570,8 @@ body {
 
 .selected-letters {
     display: flex;
+    flex-wrap: wrap;           
+    justify-content: center;   
     gap: 10px;
     margin-bottom: 30px;
     min-height: 50px;
@@ -608,6 +610,8 @@ body {
 /* 乱序字母排序样式 */
 .scrambled-letters {
     display: flex;
+    flex-wrap: wrap;           /* Add this line */
+    justify-content: center;   /* Add this line */
     gap: 10px;
     margin-bottom: 30px;
 }
@@ -634,6 +638,8 @@ body {
 
 .word-slots {
     display: flex;
+    flex-wrap: wrap;           /* Add this line */
+    justify-content: center;   /* Add this line */
     gap: 10px;
     margin-bottom: 30px;
 }
@@ -660,6 +666,8 @@ body {
 /* 填写缺字母样式 */
 .word-with-blanks {
     display: flex;
+    flex-wrap: wrap;           /* Add this line */
+    justify-content: center;   /* Add this line */
     gap: 5px;
     margin-bottom: 30px;
     font-size: 28px;
@@ -970,8 +978,10 @@ body {
         font-size: 20px;
     }
     
-    .words-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+   .words-grid {
+        /* Force tablet to keep exactly 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px; /* Slightly reduce gap for tablet screens */
     }
     
     .word-item img {
@@ -1029,13 +1039,20 @@ body {
         font-size: 18px;
     }
     
-    .words-grid {
-        grid-template-columns: repeat(3, 1fr);
+   .words-grid {
+        /* Dynamically adjust columns based on screen width */
+        /* If screen has space for 2 columns >120px, it shows 2. If it's too small, it drops to 1 */
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .word-item {
+        padding: 10px; /* Reduce padding to give image more room */
     }
     
     .word-item img {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
     }
     
     .options-container {
